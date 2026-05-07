@@ -765,7 +765,7 @@ export default function Footer() {
         </div>
 
       </motion.div>
-
+<section id="contact"></section>
       {/* TOP LINE */}
 
       <div className="
