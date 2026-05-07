@@ -199,19 +199,13 @@ export default function AdminDashboardPage() {
 
         <Sidebar
 
-          menu={menu}
+  activeMenu={activePage}
 
-          activeMenu={activePage}
+  setActiveMenu={
+    setActivePage
+  }
 
-          setActiveMenu={
-            setActivePage
-          }
-
-          handleLogout={
-            handleLogout
-          }
-
-        />
+/>
 
         {/* ================================================= */}
         {/* 🔥 CONTENT AREA */}
