@@ -1,116 +1,51 @@
 "use client";
 
-import Sidebar from "@/components/admin/Sidebar";
-import Topbar from "@/components/admin/Topbar";
+import { useEffect } from "react";
 
-import DashboardPage from "@/components/admin/DashboardPage";
-import RoomsPage from "@/components/admin/RoomsPage";
-import ResidentsPage from "@/components/admin/ResidentsPage";
-import ComplaintsPage from "@/components/admin/ComplaintsPage";
-import ReportsPage from "@/components/admin/ReportsPage";
-import PaymentsPage from "@/components/admin/PaymentsPage";
-import FoodPage from "@/components/admin/FoodPage";
+import { useRouter } from "next/navigation";
 
-import {
-  BedDouble,
-  CreditCard,
-  FileBarChart2,
-  LayoutDashboard,
-  LogOut,
-  MessageSquareWarning,
-  Users,
-  UtensilsCrossed,
-  Menu,
-} from "lucide-react";
+import StudentDashboard from "@/components/StudentDashboard";
 
-import { useState } from "react";
+/* ======================================================= */
+/* 🔥 STUDENT DASHBOARD PAGE */
+/* ======================================================= */
 
-export default function AdminDashboardPage() {
+export default function StudentDashboardPage() {
 
-  /* ====================================================== */
-  /* 🔥 STATES */
-  /* ====================================================== */
+  /* ===================================================== */
+  /* 🔥 ROUTER */
+  /* ===================================================== */
 
-  const [activePage, setActivePage] =
-    useState("Dashboard");
+  const router = useRouter();
 
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
+  /* ===================================================== */
+  /* 🔥 AUTH CHECK */
+  /* ===================================================== */
 
-  /* ====================================================== */
-  /* 🔥 MENU */
-  /* ====================================================== */
+  useEffect(() => {
 
-  const menu = [
-    {
-      name: "Dashboard",
-      icon: LayoutDashboard,
-    },
+    const role =
+      localStorage.getItem(
+        "svbs-role"
+      );
 
-    {
-      name: "Rooms",
-      icon: BedDouble,
-    },
+    /* ================================================ */
+    /* 🔥 NOT LOGGED IN */
+    /* ================================================ */
 
-    {
-      name: "Residents",
-      icon: Users,
-    },
+    if (
+      !role ||
+      role !== "student"
+    ) {
 
-    {
-      name: "Payments",
-      icon: CreditCard,
-    },
+      router.push("/");
+    }
 
-    {
-      name: "Food Menu",
-      icon: UtensilsCrossed,
-    },
+  }, [router]);
 
-    {
-      name: "Complaints",
-      icon: MessageSquareWarning,
-    },
-
-    {
-      name: "Reports",
-      icon: FileBarChart2,
-    },
-  ];
-
-  /* ====================================================== */
-  /* 🔥 LOGOUT */
-  /* ====================================================== */
-
-  const handleLogout = () => {
-
-    localStorage.removeItem(
-      "svbs-role"
-    );
-
-    localStorage.removeItem(
-      "svbs-user"
-    );
-
-    window.location.href = "/";
-  };
-
-  /* ====================================================== */
-  /* 🔥 CLOSE SIDEBAR */
-  /* ====================================================== */
-
-  const handleMenuChange = (
-    page: string
-  ) => {
-
-    setActivePage(page);
-
-    setSidebarOpen(false);
-  };
-
-  /* ====================================================== */
-  /* 🔥 JSX */
-  /* ====================================================== */
+  /* ===================================================== */
+  /* 🔥 PAGE */
+  /* ===================================================== */
 
   return (
 
@@ -122,7 +57,7 @@ export default function AdminDashboardPage() {
     ">
 
       {/* ================================================= */}
-      {/* 🔥 BACKGROUND */}
+      {/* 🔥 GLOBAL BACKGROUND */}
       {/* ================================================= */}
 
       <div className="
@@ -132,7 +67,9 @@ export default function AdminDashboardPage() {
       pointer-events-none
       ">
 
-        {/* GRID */}
+        {/* ============================================= */}
+        {/* 🔥 GRID */}
+        {/* ============================================= */}
 
         <div className="
         absolute
@@ -142,308 +79,69 @@ export default function AdminDashboardPage() {
         [background-size:80px_80px]
         "></div>
 
-        {/* PURPLE GLOW */}
+        {/* ============================================= */}
+        {/* 🔥 TOP LEFT GLOW */}
+        {/* ============================================= */}
 
         <div className="
         absolute
-        top-[-300px]
-        left-[-300px]
-        w-[800px]
-        h-[800px]
+        top-[-250px]
+        left-[-250px]
+        w-[750px]
+        h-[750px]
         bg-purple-500/20
-        blur-[200px]
+        blur-[180px]
         rounded-full
         animate-pulse
         "></div>
 
-        {/* PINK GLOW */}
+        {/* ============================================= */}
+        {/* 🔥 BOTTOM RIGHT GLOW */}
+        {/* ============================================= */}
 
         <div className="
         absolute
-        bottom-[-300px]
-        right-[-300px]
-        w-[800px]
-        h-[800px]
+        bottom-[-250px]
+        right-[-250px]
+        w-[750px]
+        h-[750px]
         bg-pink-500/20
-        blur-[200px]
+        blur-[180px]
         rounded-full
         animate-pulse
+        "></div>
+
+        {/* ============================================= */}
+        {/* 🔥 CENTER GLOW */}
+        {/* ============================================= */}
+
+        <div className="
+        absolute
+        top-1/2
+        left-1/2
+        -translate-x-1/2
+        -translate-y-1/2
+        w-[650px]
+        h-[650px]
+        bg-cyan-500/10
+        blur-[180px]
+        rounded-full
         "></div>
 
       </div>
 
       {/* ================================================= */}
-      {/* 🔥 MOBILE OVERLAY */}
-      {/* ================================================= */}
-
-      {
-        sidebarOpen && (
-
-          <div
-            onClick={() =>
-              setSidebarOpen(false)
-            }
-            className="
-            fixed
-            inset-0
-            bg-black/60
-            z-40
-            lg:hidden
-            "
-          />
-
-        )
-      }
-
-      {/* ================================================= */}
-      {/* 🔥 MAIN LAYOUT */}
+      {/* 🔥 DASHBOARD */}
       {/* ================================================= */}
 
       <div className="
       relative
       z-10
-      flex
-      min-h-screen
       ">
 
-        {/* ================================================= */}
-        {/* 🔥 SIDEBAR */}
-        {/* ================================================= */}
-
-        <div className={`
-        fixed
-        lg:relative
-        top-0
-        left-0
-        z-50
-        h-screen
-        transition-transform
-        duration-300
-        ease-in-out
-
-        ${
-          sidebarOpen
-            ? "translate-x-0"
-            : "-translate-x-full lg:translate-x-0"
-        }
-        `}>
-
-          <Sidebar
-            activeMenu={activePage}
-            setActiveMenu={
-              handleMenuChange
-            }
-          />
-
-        </div>
-
-        {/* ================================================= */}
-        {/* 🔥 CONTENT */}
-        {/* ================================================= */}
-
-        <div className="
-        flex-1
-        flex
-        flex-col
-        min-h-screen
-        overflow-hidden
-        lg:ml-0
-        ">
-
-          {/* ================================================= */}
-          {/* 🔥 MOBILE HEADER */}
-          {/* ================================================= */}
-
-          <div className="
-          lg:hidden
-          sticky
-          top-0
-          z-30
-          px-5
-          py-4
-          border-b
-          border-white/10
-          bg-[#050816]/95
-          backdrop-blur-2xl
-          flex
-          items-center
-          justify-between
-          ">
-
-            {/* LEFT */}
-
-            <div className="
-            flex
-            items-center
-            gap-3
-            ">
-
-              <button
-
-                onClick={() =>
-                  setSidebarOpen(true)
-                }
-
-                className="
-                w-11
-                h-11
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/[0.05]
-                flex
-                items-center
-                justify-center
-                text-white
-                "
-
-              >
-
-                <Menu size={22} />
-
-              </button>
-
-              <div>
-
-                <h2 className="
-                text-white
-                text-lg
-                font-bold
-                ">
-
-                  SVBS Hostel
-
-                </h2>
-
-                <p className="
-                text-xs
-                text-gray-400
-                ">
-
-                  Admin Dashboard
-
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* ================================================= */}
-          {/* 🔥 TOPBAR */}
-          {/* ================================================= */}
-
-          <Topbar
-            title={activePage}
-            role="Admin"
-          />
-
-          {/* ================================================= */}
-          {/* 🔥 PAGE CONTENT */}
-          {/* ================================================= */}
-
-          <div className="
-          flex-1
-          overflow-y-auto
-          p-4
-          sm:p-6
-          lg:p-8
-          xl:p-10
-          ">
-
-            {
-              activePage ===
-              "Dashboard" && (
-                <DashboardPage />
-              )
-            }
-
-            {
-              activePage ===
-              "Rooms" && (
-                <RoomsPage />
-              )
-            }
-
-            {
-              activePage ===
-              "Residents" && (
-                <ResidentsPage />
-              )
-            }
-
-            {
-              activePage ===
-              "Payments" && (
-                <PaymentsPage />
-              )
-            }
-
-            {
-              activePage ===
-              "Food Menu" && (
-                <FoodPage />
-              )
-            }
-
-            {
-              activePage ===
-              "Complaints" && (
-                <ComplaintsPage />
-              )
-            }
-
-            {
-              activePage ===
-              "Reports" && (
-                <ReportsPage />
-              )
-            }
-
-          </div>
-
-        </div>
+        <StudentDashboard />
 
       </div>
-
-      {/* ================================================= */}
-      {/* 🔥 MOBILE LOGOUT */}
-      {/* ================================================= */}
-
-      <button
-
-        onClick={handleLogout}
-
-        className="
-        lg:hidden
-        fixed
-        bottom-6
-        right-6
-        z-40
-        w-16
-        h-16
-        rounded-2xl
-        bg-gradient-to-r
-        from-red-500
-        via-pink-500
-        to-orange-500
-        text-white
-        shadow-[0_0_40px_rgba(239,68,68,0.45)]
-        flex
-        items-center
-        justify-center
-        hover:scale-110
-        active:scale-95
-        transition-all
-        duration-300
-        "
-
-      >
-
-        <LogOut size={24} />
-
-      </button>
 
     </main>
   );
