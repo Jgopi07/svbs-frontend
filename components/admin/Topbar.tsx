@@ -76,6 +76,55 @@ export default function Topbar({
     );
 
   /* ====================================================== */
+  /* 🔥 STATS */
+  /* ====================================================== */
+
+  const stats = [
+
+    {
+      title: "Residents",
+      value: "248",
+      icon: Users,
+      glow: "from-purple-500 to-pink-500",
+    },
+
+    {
+      title: "Occupancy",
+      value: "92%",
+      icon: Building2,
+      glow: "from-pink-500 to-rose-500",
+    },
+
+    {
+      title: "Revenue",
+      value: "₹4.8L",
+      icon: IndianRupee,
+      glow: "from-yellow-500 to-orange-500",
+    },
+
+    {
+      title: "Pending",
+      value: "14",
+      icon: AlertTriangle,
+      glow: "from-red-500 to-pink-500",
+    },
+
+    {
+      title: "Network",
+      value: "Stable",
+      icon: Wifi,
+      glow: "from-cyan-500 to-blue-500",
+    },
+
+    {
+      title: "Status",
+      value: "Online",
+      icon: UserCircle2,
+      glow: "from-indigo-500 to-purple-500",
+    },
+  ];
+
+  /* ====================================================== */
   /* 🔥 JSX */
   /* ====================================================== */
 
@@ -92,35 +141,35 @@ export default function Topbar({
     px-4
     sm:px-6
     xl:px-10
-    py-5
+    py-6
     ">
 
       {/* ================================================= */}
-      {/* 🔥 MAIN FLEX */}
+      {/* 🔥 MAIN */}
       {/* ================================================= */}
 
       <div className="
       flex
       flex-col
-      gap-6
+      gap-8
       ">
 
-        {/* ============================================= */}
+        {/* ================================================= */}
         {/* 🔥 TOP SECTION */}
-        {/* ============================================= */}
+        {/* ================================================= */}
 
         <div className="
         flex
         flex-col
-        2xl:flex-row
-        2xl:items-center
-        2xl:justify-between
-        gap-6
+        xl:flex-row
+        xl:items-center
+        xl:justify-between
+        gap-8
         ">
 
-          {/* ========================================= */}
+          {/* ================================================= */}
           {/* 🔥 LEFT */}
-          {/* ========================================= */}
+          {/* ================================================= */}
 
           <div>
 
@@ -130,7 +179,7 @@ export default function Topbar({
 
               initial={{
                 opacity: 0,
-                y: -15,
+                y: -20,
               }}
 
               animate={{
@@ -139,7 +188,7 @@ export default function Topbar({
               }}
 
               transition={{
-                duration: 0.4,
+                duration: 0.5,
               }}
 
               className="
@@ -151,12 +200,13 @@ export default function Topbar({
               rounded-full
               border
               border-white/10
-              bg-white/[0.04]
+              bg-white/[0.05]
+              backdrop-blur-xl
               text-gray-300
               text-xs
               tracking-[0.25em]
               uppercase
-              mb-5
+              mb-6
               "
             >
 
@@ -196,7 +246,7 @@ export default function Topbar({
               font-black
               text-white
               leading-none
-              mb-4
+              mb-5
               "
             >
 
@@ -226,24 +276,24 @@ export default function Topbar({
               text-gray-400
               text-base
               sm:text-lg
-              max-w-[850px]
               leading-relaxed
+              max-w-[850px]
               "
             >
 
-              Logged in as {role}. Monitor residents,
-              manage hostel rooms, track payments,
-              handle complaints, generate reports,
-              and control hostel operations with
-              real-time analytics.
+              Welcome back {role}. Monitor hostel
+              residents, room occupancy, complaints,
+              reports, food management, payments and
+              complete hostel analytics from one
+              premium dashboard.
 
             </motion.p>
 
           </div>
 
-          {/* ========================================= */}
+          {/* ================================================= */}
           {/* 🔥 RIGHT */}
-          {/* ========================================= */}
+          {/* ================================================= */}
 
           <motion.div
 
@@ -269,9 +319,7 @@ export default function Topbar({
             "
           >
 
-            {/* ===================================== */}
-            {/* 🔥 SEARCH */}
-            {/* ===================================== */}
+            {/* SEARCH */}
 
             <div className="
             hidden
@@ -286,7 +334,7 @@ export default function Topbar({
             bg-white/[0.05]
             min-w-[350px]
             backdrop-blur-xl
-            shadow-[0_0_25px_rgba(168,85,247,0.08)]
+            shadow-[0_0_30px_rgba(168,85,247,0.08)]
             ">
 
               <Search
@@ -310,7 +358,7 @@ export default function Topbar({
 
                 placeholder="
                 Search residents,
-                rooms, payments...
+                rooms, complaints...
                 "
 
                 className="
@@ -325,9 +373,7 @@ export default function Topbar({
 
             </div>
 
-            {/* ===================================== */}
-            {/* 🔥 DATE */}
-            {/* ===================================== */}
+            {/* DATE */}
 
             <div className="
             hidden
@@ -340,6 +386,7 @@ export default function Topbar({
             border
             border-white/10
             bg-white/[0.05]
+            backdrop-blur-xl
             ">
 
               <div className="
@@ -381,7 +428,7 @@ export default function Topbar({
                 text-xs
                 ">
 
-                  System Updated Live
+                  Live System Analytics
 
                 </p>
 
@@ -389,9 +436,7 @@ export default function Topbar({
 
             </div>
 
-            {/* ===================================== */}
-            {/* 🔥 NOTIFICATIONS */}
-            {/* ===================================== */}
+            {/* NOTIFICATION */}
 
             <button className="
             relative
@@ -410,12 +455,9 @@ export default function Topbar({
             hover:border-pink-500/30
             transition-all
             duration-300
-            shadow-[0_0_20px_rgba(168,85,247,0.08)]
             ">
 
               <Bell size={24} />
-
-              {/* DOT */}
 
               <span className="
               absolute
@@ -432,9 +474,7 @@ export default function Topbar({
 
             </button>
 
-            {/* ===================================== */}
-            {/* 🔥 SETTINGS */}
-            {/* ===================================== */}
+            {/* SETTINGS */}
 
             <button className="
             w-16
@@ -452,7 +492,6 @@ export default function Topbar({
             hover:border-purple-500/30
             transition-all
             duration-300
-            shadow-[0_0_20px_rgba(168,85,247,0.08)]
             ">
 
               <Settings2
@@ -461,9 +500,7 @@ export default function Topbar({
 
             </button>
 
-            {/* ===================================== */}
-            {/* 🔥 DARK MODE */}
-            {/* ===================================== */}
+            {/* DARK MODE */}
 
             <button
 
@@ -489,7 +526,6 @@ export default function Topbar({
               hover:border-yellow-500/30
               transition-all
               duration-300
-              shadow-[0_0_20px_rgba(168,85,247,0.08)]
               "
             >
 
@@ -513,9 +549,9 @@ export default function Topbar({
 
         </div>
 
-        {/* ============================================= */}
-        {/* 🔥 STATS STRIP */}
-        {/* ============================================= */}
+        {/* ================================================= */}
+        {/* 🔥 STATS */}
+        {/* ================================================= */}
 
         <motion.div
 
@@ -542,541 +578,109 @@ export default function Topbar({
           "
         >
 
-          {/* CARD 1 */}
+          {stats.map((item, i) => {
 
-          <div className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.05]
-          p-5
-          backdrop-blur-2xl
-          ">
+            const Icon = item.icon;
 
-            <div className="
-            absolute
-            top-0
-            right-0
-            w-28
-            h-28
-            rounded-full
-            bg-purple-500/20
-            blur-[70px]
-            "></div>
+            return (
 
-            <div className="
-            relative
-            z-10
-            ">
-
-              <div className="
-              flex
-              items-center
-              justify-between
-              mb-5
-              ">
-
-                <div className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-gradient-to-r
-                from-purple-500/20
-                to-pink-500/20
+              <div
+                key={i}
+                className="
+                relative
+                overflow-hidden
+                rounded-[28px]
                 border
                 border-white/10
-                flex
-                items-center
-                justify-center
-                text-purple-300
+                bg-white/[0.05]
+                p-5
+                backdrop-blur-2xl
+                hover:-translate-y-1
+                transition-all
+                duration-300
+                "
+              >
+
+                {/* GLOW */}
+
+                <div className={`
+                absolute
+                top-0
+                right-0
+                w-28
+                h-28
+                rounded-full
+                blur-[70px]
+                opacity-30
+                bg-gradient-to-r
+                ${item.glow}
+                `}></div>
+
+                {/* CONTENT */}
+
+                <div className="
+                relative
+                z-10
                 ">
 
-                  <Users size={22} />
+                  <div className="
+                  flex
+                  items-center
+                  justify-between
+                  mb-5
+                  ">
+
+                    <div className="
+                    w-12
+                    h-12
+                    rounded-2xl
+                    bg-white/[0.06]
+                    border
+                    border-white/10
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    ">
+
+                      <Icon size={22} />
+
+                    </div>
+
+                    <Activity
+                      size={18}
+                      className="
+                      text-emerald-400
+                      "
+                    />
+
+                  </div>
+
+                  <h3 className="
+                  text-3xl
+                  font-black
+                  text-white
+                  mb-2
+                  ">
+
+                    {item.value}
+
+                  </h3>
+
+                  <p className="
+                  text-gray-400
+                  text-sm
+                  ">
+
+                    {item.title}
+
+                  </p>
 
                 </div>
 
-                <Activity
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
-
               </div>
-
-              <h3 className="
-              text-3xl
-              font-black
-              text-white
-              mb-2
-              ">
-
-                248
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Total Residents
-
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* CARD 2 */}
-
-          <div className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.05]
-          p-5
-          backdrop-blur-2xl
-          ">
-
-            <div className="
-            absolute
-            top-0
-            right-0
-            w-28
-            h-28
-            rounded-full
-            bg-pink-500/20
-            blur-[70px]
-            "></div>
-
-            <div className="
-            relative
-            z-10
-            ">
-
-              <div className="
-              flex
-              items-center
-              justify-between
-              mb-5
-              ">
-
-                <div className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-gradient-to-r
-                from-pink-500/20
-                to-rose-500/20
-                border
-                border-white/10
-                flex
-                items-center
-                justify-center
-                text-pink-300
-                ">
-
-                  <Building2
-                    size={22}
-                  />
-
-                </div>
-
-                <BadgeCheck
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
-
-              </div>
-
-              <h3 className="
-              text-3xl
-              font-black
-              text-white
-              mb-2
-              ">
-
-                92%
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Occupancy Rate
-
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* CARD 3 */}
-
-          <div className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.05]
-          p-5
-          backdrop-blur-2xl
-          ">
-
-            <div className="
-            absolute
-            top-0
-            right-0
-            w-28
-            h-28
-            rounded-full
-            bg-yellow-500/20
-            blur-[70px]
-            "></div>
-
-            <div className="
-            relative
-            z-10
-            ">
-
-              <div className="
-              flex
-              items-center
-              justify-between
-              mb-5
-              ">
-
-                <div className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-gradient-to-r
-                from-yellow-500/20
-                to-orange-500/20
-                border
-                border-white/10
-                flex
-                items-center
-                justify-center
-                text-yellow-300
-                ">
-
-                  <IndianRupee
-                    size={22}
-                  />
-
-                </div>
-
-                <Activity
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
-
-              </div>
-
-              <h3 className="
-              text-3xl
-              font-black
-              text-white
-              mb-2
-              ">
-
-                ₹4.8L
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Monthly Revenue
-
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* CARD 4 */}
-
-          <div className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.05]
-          p-5
-          backdrop-blur-2xl
-          ">
-
-            <div className="
-            absolute
-            top-0
-            right-0
-            w-28
-            h-28
-            rounded-full
-            bg-red-500/20
-            blur-[70px]
-            "></div>
-
-            <div className="
-            relative
-            z-10
-            ">
-
-              <div className="
-              flex
-              items-center
-              justify-between
-              mb-5
-              ">
-
-                <div className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-gradient-to-r
-                from-red-500/20
-                to-pink-500/20
-                border
-                border-white/10
-                flex
-                items-center
-                justify-center
-                text-red-300
-                ">
-
-                  <AlertTriangle
-                    size={22}
-                  />
-
-                </div>
-
-                <Clock3
-                  size={18}
-                  className="
-                  text-yellow-300
-                  "
-                />
-
-              </div>
-
-              <h3 className="
-              text-3xl
-              font-black
-              text-white
-              mb-2
-              ">
-
-                14
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Pending Payments
-
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* CARD 5 */}
-
-          <div className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.05]
-          p-5
-          backdrop-blur-2xl
-          ">
-
-            <div className="
-            absolute
-            top-0
-            right-0
-            w-28
-            h-28
-            rounded-full
-            bg-cyan-500/20
-            blur-[70px]
-            "></div>
-
-            <div className="
-            relative
-            z-10
-            ">
-
-              <div className="
-              flex
-              items-center
-              justify-between
-              mb-5
-              ">
-
-                <div className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-gradient-to-r
-                from-cyan-500/20
-                to-blue-500/20
-                border
-                border-white/10
-                flex
-                items-center
-                justify-center
-                text-cyan-300
-                ">
-
-                  <Wifi size={22} />
-
-                </div>
-
-                <ShieldCheck
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
-
-              </div>
-
-              <h3 className="
-              text-3xl
-              font-black
-              text-white
-              mb-2
-              ">
-
-                Stable
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Network Status
-
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* CARD 6 */}
-
-          <div className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.05]
-          p-5
-          backdrop-blur-2xl
-          ">
-
-            <div className="
-            absolute
-            top-0
-            right-0
-            w-28
-            h-28
-            rounded-full
-            bg-purple-500/20
-            blur-[70px]
-            "></div>
-
-            <div className="
-            relative
-            z-10
-            ">
-
-              <div className="
-              flex
-              items-center
-              justify-between
-              mb-5
-              ">
-
-                <div className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-gradient-to-r
-                from-purple-500/20
-                to-indigo-500/20
-                border
-                border-white/10
-                flex
-                items-center
-                justify-center
-                text-purple-300
-                ">
-
-                  <UserCircle2
-                    size={22}
-                  />
-
-                </div>
-
-                <Activity
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
-
-              </div>
-
-              <h3 className="
-              text-3xl
-              font-black
-              text-white
-              mb-2
-              ">
-
-                Online
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Admin Status
-
-              </p>
-
-            </div>
-
-          </div>
+            );
+          })}
 
         </motion.div>
 
