@@ -411,43 +411,7 @@ export default function AdminDashboardPage() {
 
       </div>
 
-      {/* ================================================= */}
-      {/* 🔥 MOBILE FLOATING LOGOUT */}
-      {/* ================================================= */}
-
-      <button
-
-        onClick={handleLogout}
-
-        className="
-        lg:hidden
-        fixed
-        bottom-6
-        right-6
-        z-40
-        w-16
-        h-16
-        rounded-2xl
-        bg-gradient-to-r
-        from-red-500
-        via-pink-500
-        to-orange-500
-        text-white
-        shadow-[0_0_40px_rgba(239,68,68,0.45)]
-        flex
-        items-center
-        justify-center
-        hover:scale-110
-        active:scale-95
-        transition-all
-        duration-300
-        "
-
-      >
-
-        <LogOut size={24} />
-
-      </button>
+      
 
     </main>
   );
