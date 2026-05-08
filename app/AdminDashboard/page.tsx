@@ -28,20 +28,18 @@ import { useState } from "react";
 export default function AdminDashboardPage() {
 
   /* ====================================================== */
-  /* 🔥 STATES */
+  /* 🔥 ACTIVE PAGE */
   /* ====================================================== */
 
   const [activePage, setActivePage] =
     useState("Dashboard");
-
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
 
   /* ====================================================== */
   /* 🔥 MENU */
   /* ====================================================== */
 
   const menu = [
+
     {
       name: "Dashboard",
       icon: LayoutDashboard,
@@ -93,19 +91,6 @@ export default function AdminDashboardPage() {
     );
 
     window.location.href = "/";
-  };
-
-  /* ====================================================== */
-  /* 🔥 CLOSE SIDEBAR */
-  /* ====================================================== */
-
-  const handleMenuChange = (
-    page: string
-  ) => {
-
-    setActivePage(page);
-
-    setSidebarOpen(false);
   };
 
   /* ====================================================== */
@@ -170,30 +155,33 @@ export default function AdminDashboardPage() {
         animate-pulse
         "></div>
 
+        {/* CYAN GLOW */}
+
+        <div className="
+        absolute
+        top-[30%]
+        left-[40%]
+        w-[500px]
+        h-[500px]
+        bg-cyan-500/10
+        blur-[180px]
+        rounded-full
+        "></div>
+
+        {/* EXTRA PURPLE LIGHT */}
+
+        <div className="
+        absolute
+        bottom-[10%]
+        left-[15%]
+        w-[400px]
+        h-[400px]
+        bg-violet-500/10
+        blur-[160px]
+        rounded-full
+        "></div>
+
       </div>
-
-      {/* ================================================= */}
-      {/* 🔥 MOBILE OVERLAY */}
-      {/* ================================================= */}
-
-      {
-        sidebarOpen && (
-
-          <div
-            onClick={() =>
-              setSidebarOpen(false)
-            }
-            className="
-            fixed
-            inset-0
-            bg-black/60
-            z-40
-            lg:hidden
-            "
-          />
-
-        )
-      }
 
       {/* ================================================= */}
       {/* 🔥 MAIN LAYOUT */}
@@ -210,35 +198,18 @@ export default function AdminDashboardPage() {
         {/* 🔥 SIDEBAR */}
         {/* ================================================= */}
 
-        <div className={`
-        fixed
-        lg:relative
-        top-0
-        left-0
-        z-50
-        h-screen
-        transition-transform
-        duration-300
-        ease-in-out
+        <Sidebar
 
-        ${
-          sidebarOpen
-            ? "translate-x-0"
-            : "-translate-x-full lg:translate-x-0"
-        }
-        `}>
+  activeMenu={activePage}
 
-          <Sidebar
-            activeMenu={activePage}
-            setActiveMenu={
-              handleMenuChange
-            }
-          />
+  setActiveMenu={
+    setActivePage
+  }
 
-        </div>
+/>
 
         {/* ================================================= */}
-        {/* 🔥 CONTENT */}
+        {/* 🔥 CONTENT AREA */}
         {/* ================================================= */}
 
         <div className="
@@ -247,88 +218,7 @@ export default function AdminDashboardPage() {
         flex-col
         min-h-screen
         overflow-hidden
-        lg:ml-0
         ">
-
-          {/* ================================================= */}
-          {/* 🔥 MOBILE HEADER */}
-          {/* ================================================= */}
-
-          <div className="
-          lg:hidden
-          sticky
-          top-0
-          z-30
-          px-5
-          py-4
-          border-b
-          border-white/10
-          bg-[#050816]/95
-          backdrop-blur-2xl
-          flex
-          items-center
-          justify-between
-          ">
-
-            {/* LEFT */}
-
-            <div className="
-            flex
-            items-center
-            gap-3
-            ">
-
-              <button
-
-                onClick={() =>
-                  setSidebarOpen(true)
-                }
-
-                className="
-                w-11
-                h-11
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/[0.05]
-                flex
-                items-center
-                justify-center
-                text-white
-                "
-
-              >
-
-                <Menu size={22} />
-
-              </button>
-
-              <div>
-
-                <h2 className="
-                text-white
-                text-lg
-                font-bold
-                ">
-
-                  SVBS Hostel
-
-                </h2>
-
-                <p className="
-                text-xs
-                text-gray-400
-                ">
-
-                  Admin Dashboard
-
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
 
           {/* ================================================= */}
           {/* 🔥 TOPBAR */}
@@ -352,54 +242,82 @@ export default function AdminDashboardPage() {
           xl:p-10
           ">
 
-            {
-              activePage ===
+            {/* ============================================= */}
+            {/* 🔥 DASHBOARD */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Dashboard" && (
-                <DashboardPage />
-              )
-            }
 
-            {
-              activePage ===
+              <DashboardPage />
+
+            )}
+
+            {/* ============================================= */}
+            {/* 🔥 ROOMS */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Rooms" && (
-                <RoomsPage />
-              )
-            }
 
-            {
-              activePage ===
+              <RoomsPage />
+
+            )}
+
+            {/* ============================================= */}
+            {/* 🔥 RESIDENTS */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Residents" && (
-                <ResidentsPage />
-              )
-            }
 
-            {
-              activePage ===
+              <ResidentsPage />
+
+            )}
+
+            {/* ============================================= */}
+            {/* 🔥 PAYMENTS */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Payments" && (
-                <PaymentsPage />
-              )
-            }
 
-            {
-              activePage ===
+              <PaymentsPage />
+
+            )}
+
+            {/* ============================================= */}
+            {/* 🔥 FOOD MENU */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Food Menu" && (
-                <FoodPage />
-              )
-            }
 
-            {
-              activePage ===
+              <FoodPage />
+
+            )}
+
+            {/* ============================================= */}
+            {/* 🔥 COMPLAINTS */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Complaints" && (
-                <ComplaintsPage />
-              )
-            }
 
-            {
-              activePage ===
+              <ComplaintsPage />
+
+            )}
+
+            {/* ============================================= */}
+            {/* 🔥 REPORTS */}
+            {/* ============================================= */}
+
+            {activePage ===
               "Reports" && (
-                <ReportsPage />
-              )
-            }
+
+              <ReportsPage />
+
+            )}
 
           </div>
 
@@ -408,7 +326,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* ================================================= */}
-      {/* 🔥 MOBILE LOGOUT */}
+      {/* 🔥 MOBILE FLOATING LOGOUT */}
       {/* ================================================= */}
 
       <button
@@ -420,7 +338,7 @@ export default function AdminDashboardPage() {
         fixed
         bottom-6
         right-6
-        z-40
+        z-50
         w-16
         h-16
         rounded-2xl
@@ -447,4 +365,4 @@ export default function AdminDashboardPage() {
 
     </main>
   );
-}
+}  
