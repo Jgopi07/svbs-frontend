@@ -189,13 +189,13 @@ export default function AdminDashboardPage() {
               setSidebarOpen(false)
             }
             className="
-            fixed
-            inset-0
-            bg-black/60
-            
-            z-40
-            lg:hidden
-            "
+fixed
+inset-0
+bg-black/60
+
+z-30
+lg:hidden
+"
           />
         )
       }
