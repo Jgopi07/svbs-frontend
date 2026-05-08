@@ -12,7 +12,6 @@ import {
   ShieldCheck,
   MoonStar,
   LogOut,
-  Sparkles,
   Activity,
   Building2,
   ClipboardList,
@@ -131,23 +130,33 @@ export default function Sidebar({
       }}
 
       transition={{
-        duration: 0.6,
+        duration: 0.5,
       }}
 
       className="
-flex
-flex-col
-w-[330px]
-h-screen
-border-r
-border-white/10
-bg-[#0b1020]
-backdrop-blur-3xl
-p-7
-relative
-overflow-y-auto
-shadow-[0_0_50px_rgba(0,0,0,0.45)]
-"
+      flex
+      flex-col
+
+      w-[85vw]
+      max-w-[320px]
+      sm:max-w-[340px]
+
+      h-screen
+
+      border-r
+      border-white/10
+
+      bg-[#0b1020]/95
+      backdrop-blur-3xl
+
+      p-4
+      sm:p-6
+
+      relative
+      overflow-y-auto
+
+      shadow-[0_0_60px_rgba(0,0,0,0.55)]
+      "
     >
 
       {/* ================================================= */}
@@ -158,8 +167,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
       absolute
       top-[-120px]
       left-[-120px]
-      w-[260px]
-      h-[260px]
+      w-[220px]
+      h-[220px]
       rounded-full
       bg-purple-500/20
       blur-[100px]
@@ -169,15 +178,15 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
       absolute
       bottom-[-120px]
       right-[-120px]
-      w-[260px]
-      h-[260px]
+      w-[220px]
+      h-[220px]
       rounded-full
       bg-pink-500/20
       blur-[100px]
       "></div>
 
       {/* ================================================= */}
-      {/* 🔥 TOP LOGO */}
+      {/* 🔥 TOP */}
       {/* ================================================= */}
 
       <div className="
@@ -186,22 +195,24 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
       flex
       items-center
       justify-between
-      mb-10
+      mb-8
       ">
 
         <div className="
         flex
         items-center
-        gap-4
+        gap-3
         ">
 
           {/* LOGO */}
 
           <div className="
           relative
-          w-16
-          h-16
-          rounded-[22px]
+          w-14
+          h-14
+          sm:w-16
+          sm:h-16
+          rounded-[20px]
           bg-gradient-to-r
           from-purple-500
           via-pink-500
@@ -212,18 +223,10 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           text-black
           font-black
           text-2xl
-          shadow-[0_0_40px_rgba(168,85,247,0.5)]
+          shadow-[0_0_30px_rgba(168,85,247,0.4)]
           ">
 
             A
-
-            <div className="
-            absolute
-            inset-0
-            rounded-[22px]
-            border
-            border-white/20
-            "></div>
 
           </div>
 
@@ -232,11 +235,11 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           <div>
 
             <h1 className="
-            text-3xl
+            text-2xl
+            sm:text-3xl
             font-black
             text-white
             leading-none
-            mb-2
             ">
 
               SVBS
@@ -244,9 +247,10 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             </h1>
 
             <p className="
-            text-sm
+            text-xs
+            sm:text-sm
             text-gray-400
-            tracking-wide
+            mt-1
             ">
 
               Admin Dashboard
@@ -260,7 +264,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         {/* LIVE */}
 
         <div className="
-        flex
+        hidden
+        sm:flex
         items-center
         gap-2
         px-3
@@ -296,22 +301,23 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
       relative
       z-10
       overflow-hidden
-      rounded-[35px]
+      rounded-[28px]
       border
       border-white/10
       bg-white/[0.05]
-      p-6
-      mb-8
+      p-4
+      sm:p-5
+      mb-6
       ">
 
-        {/* CARD GLOW */}
+        {/* GLOW */}
 
         <div className="
         absolute
         top-0
         right-0
-        w-44
-        h-44
+        w-40
+        h-40
         rounded-full
         bg-purple-500/20
         blur-[90px]
@@ -329,15 +335,13 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           <div className="
           flex
           items-center
-          gap-4
-          mb-6
+          gap-3
+          mb-5
           ">
 
-            {/* AVATAR */}
-
             <div className="
-            w-16
-            h-16
+            w-14
+            h-14
             rounded-2xl
             bg-gradient-to-r
             from-purple-500
@@ -346,22 +350,19 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             items-center
             justify-center
             text-white
-            shadow-[0_0_30px_rgba(168,85,247,0.4)]
             ">
 
-              <ShieldCheck size={30} />
+              <ShieldCheck size={26} />
 
             </div>
-
-            {/* DETAILS */}
 
             <div>
 
               <h2 className="
               text-white
-              text-xl
+              text-lg
+              sm:text-xl
               font-bold
-              mb-1
               ">
 
                 Super Admin
@@ -370,7 +371,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
               <p className="
               text-gray-400
-              text-sm
+              text-xs
+              sm:text-sm
               ">
 
                 admin@svbs.com
@@ -386,12 +388,12 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           <div className="
           flex
           flex-wrap
-          gap-3
-          mb-6
+          gap-2
+          mb-5
           ">
 
             <div className="
-            px-4
+            px-3
             py-2
             rounded-full
             bg-emerald-500/10
@@ -407,7 +409,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             </div>
 
             <div className="
-            px-4
+            px-3
             py-2
             rounded-full
             bg-purple-500/10
@@ -418,18 +420,18 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             font-semibold
             ">
 
-              Secure Control
+              Secure
 
             </div>
 
           </div>
 
-          {/* MINI STATS */}
+          {/* STATS */}
 
           <div className="
           grid
           grid-cols-2
-          gap-4
+          gap-3
           ">
 
             <div className="
@@ -437,18 +439,18 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             border
             border-white/10
             bg-white/[0.04]
-            p-4
+            p-3
             ">
 
               <div className="
               flex
               items-center
-              gap-3
-              mb-3
+              gap-2
+              mb-2
               ">
 
                 <Users
-                  size={18}
+                  size={16}
                   className="
                   text-purple-300
                   "
@@ -456,7 +458,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
                 <span className="
                 text-gray-400
-                text-sm
+                text-xs
                 ">
 
                   Residents
@@ -466,7 +468,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
               </div>
 
               <h3 className="
-              text-2xl
+              text-xl
               font-black
               text-white
               ">
@@ -482,18 +484,18 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             border
             border-white/10
             bg-white/[0.04]
-            p-4
+            p-3
             ">
 
               <div className="
               flex
               items-center
-              gap-3
-              mb-3
+              gap-2
+              mb-2
               ">
 
                 <Building2
-                  size={18}
+                  size={16}
                   className="
                   text-pink-300
                   "
@@ -501,7 +503,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
                 <span className="
                 text-gray-400
-                text-sm
+                text-xs
                 ">
 
                   Rooms
@@ -511,7 +513,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
               </div>
 
               <h3 className="
-              text-2xl
+              text-xl
               font-black
               text-white
               ">
@@ -536,9 +538,10 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
       relative
       z-10
       grid
-      grid-cols-2
-      gap-4
-      mb-8
+      grid-cols-1
+      sm:grid-cols-2
+      gap-3
+      mb-6
       ">
 
         {/* ADD */}
@@ -548,22 +551,21 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         bg-gradient-to-r
         from-purple-500
         to-pink-500
-        p-5
+        p-4
         text-left
         text-white
-        hover:scale-[1.03]
         transition-all
         duration-300
-        shadow-[0_0_30px_rgba(168,85,247,0.35)]
         ">
 
           <UserPlus
-            size={24}
-            className="mb-4"
+            size={22}
+            className="mb-3"
           />
 
           <h3 className="
           font-bold
+          text-base
           mb-1
           ">
 
@@ -589,24 +591,22 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         border
         border-white/10
         bg-white/[0.05]
-        p-5
+        p-4
         text-left
-        hover:border-purple-500/30
-        transition-all
-        duration-300
         ">
 
           <ClipboardList
-            size={24}
+            size={22}
             className="
             text-purple-300
-            mb-4
+            mb-3
             "
           />
 
           <h3 className="
           text-white
           font-bold
+          text-base
           mb-1
           ">
 
@@ -649,7 +649,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             <motion.button
 
               whileHover={{
-                scale: 1.02,
+                scale: 1.01,
               }}
 
               whileTap={{
@@ -669,9 +669,9 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
               relative
               overflow-hidden
               w-full
-              rounded-[28px]
+              rounded-[24px]
               border
-              p-5
+              p-4
               transition-all
               duration-300
 
@@ -683,7 +683,6 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
                   from-purple-500
                   to-pink-500
                   border-purple-500/20
-                  shadow-[0_0_40px_rgba(168,85,247,0.35)]
                   text-white
                   `
 
@@ -691,26 +690,11 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
                   bg-white/[0.04]
                   border-white/10
                   hover:border-purple-500/20
-                  hover:bg-white/[0.07]
                   text-gray-300
                   `
               }
               `}
             >
-
-              {/* ACTIVE GLOW */}
-
-              {activeMenu ===
-                item.name && (
-
-                <div className="
-                absolute
-                inset-0
-                bg-white/5
-                "></div>
-              )}
-
-              {/* CONTENT */}
 
               <div className="
               relative
@@ -725,23 +709,22 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
                 <div className="
                 flex
                 items-center
-                gap-4
+                gap-3
+                min-w-0
                 ">
 
                   {/* ICON */}
 
                   <div className={`
-                  w-14
-                  h-14
+                  w-12
+                  h-12
                   rounded-2xl
                   flex
                   items-center
                   justify-center
-                  transition-all
 
                   ${
-                    activeMenu ===
-                    item.name
+                    activeMenu === item.name
 
                       ? `
                       bg-white/20
@@ -757,7 +740,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
                   }
                   `}>
 
-                    <Icon size={24} />
+                    <Icon size={22} />
 
                   </div>
 
@@ -765,12 +748,14 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
                   <div className="
                   text-left
+                  min-w-0
                   ">
 
                     <h3 className="
                     font-bold
-                    text-lg
-                    mb-1
+                    text-sm
+                    sm:text-base
+                    truncate
                     ">
 
                       {item.name}
@@ -778,11 +763,11 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
                     </h3>
 
                     <p className={`
-                    text-sm
+                    text-xs
+                    truncate
 
                     ${
-                      activeMenu ===
-                      item.name
+                      activeMenu === item.name
 
                         ? `
                         text-white/80
@@ -806,24 +791,20 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
                 <ChevronRight
 
-                  size={20}
+                  size={18}
 
                   className={`
-                  transition-all
-                  duration-300
+                  flex-shrink-0
 
                   ${
-                    activeMenu ===
-                    item.name
+                    activeMenu === item.name
 
                       ? `
-                      translate-x-1
                       text-white
                       `
 
                       : `
                       text-gray-500
-                      group-hover:translate-x-1
                       `
                   }
                   `}
@@ -844,24 +825,22 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
       <div className="
       relative
       z-10
-      mt-8
-      rounded-[32px]
+      mt-6
+      rounded-[28px]
       border
       border-white/10
       bg-white/[0.05]
-      p-6
-      mb-6
+      p-5
+      mb-5
       overflow-hidden
       ">
-
-        {/* GLOW */}
 
         <div className="
         absolute
         bottom-0
         right-0
-        w-36
-        h-36
+        w-32
+        h-32
         bg-pink-500/20
         blur-[80px]
         rounded-full
@@ -875,16 +854,16 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         flex
         items-center
         justify-between
-        mb-6
+        mb-5
         ">
 
           <div>
 
             <h3 className="
             text-white
-            text-xl
+            text-lg
             font-bold
-            mb-2
+            mb-1
             ">
 
               Live Analytics
@@ -893,7 +872,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
             <p className="
             text-gray-400
-            text-sm
+            text-xs
             ">
 
               Hostel performance
@@ -903,8 +882,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           </div>
 
           <div className="
-          w-14
-          h-14
+          w-12
+          h-12
           rounded-2xl
           bg-gradient-to-r
           from-purple-500
@@ -915,34 +894,31 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           text-white
           ">
 
-            <Activity size={24} />
+            <Activity size={20} />
 
           </div>
 
         </div>
 
-        {/* PROGRESS */}
+        {/* BARS */}
 
         <div className="
         relative
         z-10
-        space-y-5
+        space-y-4
         ">
-
-          {/* OCCUPANCY */}
 
           <div>
 
             <div className="
             flex
-            items-center
             justify-between
-            mb-3
+            mb-2
             ">
 
               <span className="
               text-gray-300
-              text-sm
+              text-xs
               ">
 
                 Occupancy
@@ -951,8 +927,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
               <span className="
               text-white
+              text-xs
               font-semibold
-              text-sm
               ">
 
                 92%
@@ -963,7 +939,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
             <div className="
             w-full
-            h-3
+            h-2
             rounded-full
             bg-white/10
             overflow-hidden
@@ -982,20 +958,17 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
           </div>
 
-          {/* REVENUE */}
-
           <div>
 
             <div className="
             flex
-            items-center
             justify-between
-            mb-3
+            mb-2
             ">
 
               <span className="
               text-gray-300
-              text-sm
+              text-xs
               ">
 
                 Revenue
@@ -1004,8 +977,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
               <span className="
               text-white
+              text-xs
               font-semibold
-              text-sm
               ">
 
                 84%
@@ -1016,7 +989,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
             <div className="
             w-full
-            h-3
+            h-2
             rounded-full
             bg-white/10
             overflow-hidden
@@ -1054,12 +1027,12 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         flex
         items-center
         justify-between
-        rounded-[28px]
+        rounded-[24px]
         border
         border-white/10
         bg-white/[0.05]
-        p-5
-        mb-5
+        p-4
+        mb-4
         ">
 
           <div>
@@ -1067,7 +1040,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
             <h3 className="
             text-white
             font-bold
-            mb-2
+            text-sm
+            mb-1
             ">
 
               Secure Mode
@@ -1076,7 +1050,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
             <p className="
             text-gray-400
-            text-sm
+            text-xs
             ">
 
               System protected
@@ -1086,8 +1060,8 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           </div>
 
           <div className="
-          w-14
-          h-14
+          w-12
+          h-12
           rounded-2xl
           bg-gradient-to-r
           from-purple-500
@@ -1098,7 +1072,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
           text-white
           ">
 
-            <MoonStar size={22} />
+            <MoonStar size={20} />
 
           </div>
 
@@ -1109,7 +1083,7 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         <motion.button
 
           whileHover={{
-            scale: 1.02,
+            scale: 1.01,
           }}
 
           whileTap={{
@@ -1120,24 +1094,24 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
           className="
           w-full
-          rounded-[28px]
+          rounded-[24px]
           bg-gradient-to-r
           from-red-500
           via-pink-500
           to-rose-500
-          p-5
+          p-4
           text-white
           font-bold
-          text-lg
+          text-base
           flex
           items-center
           justify-center
-          gap-4
+          gap-3
           shadow-[0_0_35px_rgba(239,68,68,0.35)]
           "
         >
 
-          <LogOut size={24} />
+          <LogOut size={22} />
 
           Logout
 
@@ -1146,13 +1120,13 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
         {/* COPYRIGHT */}
 
         <div className="
-        mt-5
+        mt-4
         text-center
         ">
 
           <p className="
           text-gray-500
-          text-xs
+          text-[10px]
           tracking-wide
           ">
 
@@ -1166,4 +1140,4 @@ shadow-[0_0_50px_rgba(0,0,0,0.45)]
 
     </motion.aside>
   );
-} 
+}
