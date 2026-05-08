@@ -77,9 +77,7 @@ export default function StudentDashboard() {
 
         return (
           <DashboardPage
-            setActiveMenu={
-              setActiveMenu
-            }
+            
           />
         );
 
@@ -110,7 +108,9 @@ export default function StudentDashboard() {
       default:
 
         return (
-          <DashboardPage/>
+          <DashboardPage
+            
+          />
         );
     }
   };
