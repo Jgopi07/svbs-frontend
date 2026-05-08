@@ -27,19 +27,11 @@ import { useState } from "react";
 
 export default function AdminDashboardPage() {
 
-  /* ====================================================== */
-  /* 🔥 STATES */
-  /* ====================================================== */
-
   const [activePage, setActivePage] =
     useState("Dashboard");
 
   const [sidebarOpen, setSidebarOpen] =
     useState(false);
-
-  /* ====================================================== */
-  /* 🔥 MENU */
-  /* ====================================================== */
 
   const menu = [
     {
@@ -72,10 +64,6 @@ export default function AdminDashboardPage() {
     },
   ];
 
-  /* ====================================================== */
-  /* 🔥 LOGOUT */
-  /* ====================================================== */
-
   const handleLogout = () => {
 
     localStorage.removeItem(
@@ -89,10 +77,6 @@ export default function AdminDashboardPage() {
     window.location.href = "/";
   };
 
-  /* ====================================================== */
-  /* 🔥 JSX */
-  /* ====================================================== */
-
   return (
 
     <main className="
@@ -102,9 +86,7 @@ export default function AdminDashboardPage() {
     bg-[#050816]
     ">
 
-      {/* ================================================= */}
-      {/* 🔥 BACKGROUND */}
-      {/* ================================================= */}
+      {/* BACKGROUND */}
 
       <div className="
       fixed
@@ -112,8 +94,6 @@ export default function AdminDashboardPage() {
       overflow-hidden
       pointer-events-none
       ">
-
-        {/* GRID */}
 
         <div className="
         absolute
@@ -123,39 +103,9 @@ export default function AdminDashboardPage() {
         [background-size:80px_80px]
         "></div>
 
-        {/* PURPLE GLOW */}
-
-        <div className="
-        absolute
-        top-[-300px]
-        left-[-300px]
-        w-[800px]
-        h-[800px]
-        bg-purple-500/20
-        blur-[200px]
-        rounded-full
-        animate-pulse
-        "></div>
-
-        {/* PINK GLOW */}
-
-        <div className="
-        absolute
-        bottom-[-300px]
-        right-[-300px]
-        w-[800px]
-        h-[800px]
-        bg-pink-500/20
-        blur-[200px]
-        rounded-full
-        animate-pulse
-        "></div>
-
       </div>
 
-      {/* ================================================= */}
-      {/* 🔥 MOBILE OVERLAY */}
-      {/* ================================================= */}
+      {/* MOBILE OVERLAY */}
 
       {
         sidebarOpen && (
@@ -167,7 +117,8 @@ export default function AdminDashboardPage() {
             className="
             fixed
             inset-0
-            bg-black/50
+            bg-black/60
+            backdrop-blur-sm
             z-40
             lg:hidden
             "
@@ -176,9 +127,7 @@ export default function AdminDashboardPage() {
         )
       }
 
-      {/* ================================================= */}
-      {/* 🔥 MAIN */}
-      {/* ================================================= */}
+      {/* MAIN */}
 
       <div className="
       relative
@@ -187,9 +136,7 @@ export default function AdminDashboardPage() {
       min-h-screen
       ">
 
-        {/* ================================================= */}
-        {/* 🔥 SIDEBAR */}
-        {/* ================================================= */}
+        {/* SIDEBAR */}
 
         <div className={`
         fixed
@@ -214,29 +161,17 @@ export default function AdminDashboardPage() {
 
         </div>
 
-        {/* ================================================= */}
-        {/* 🔥 CONTENT */}
-        {/* ================================================= */}
+        {/* CONTENT */}
 
-        <div className={`
+        <div className="
         flex-1
         flex
         flex-col
         min-h-screen
         overflow-hidden
-        transition-all
-        duration-300
+        ">
 
-        ${
-          sidebarOpen
-            ? "blur-sm lg:blur-0"
-            : "blur-0"
-        }
-        `}>
-
-          {/* ================================================= */}
-          {/* 🔥 MOBILE TOPBAR */}
-          {/* ================================================= */}
+          {/* MOBILE TOPBAR */}
 
           <div className="
           lg:hidden
@@ -309,18 +244,14 @@ export default function AdminDashboardPage() {
 
           </div>
 
-          {/* ================================================= */}
-          {/* 🔥 TOPBAR */}
-          {/* ================================================= */}
+          {/* TOPBAR */}
 
           <Topbar
             title={activePage}
             role="Admin"
           />
 
-          {/* ================================================= */}
-          {/* 🔥 PAGE */}
-          {/* ================================================= */}
+          {/* PAGE */}
 
           <div className="
           flex-1
@@ -386,9 +317,7 @@ export default function AdminDashboardPage() {
 
       </div>
 
-      {/* ================================================= */}
-      {/* 🔥 MOBILE LOGOUT */}
-      {/* ================================================= */}
+      {/* MOBILE LOGOUT */}
 
       <button
 
