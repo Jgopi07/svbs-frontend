@@ -13,10 +13,8 @@ import {
   Building2,
   IndianRupee,
   AlertTriangle,
-  ChevronDown,
   MoonStar,
   SunMedium,
-  Menu,
   UserCircle2,
   Clock3,
   BadgeCheck,
@@ -26,7 +24,29 @@ import { motion } from "framer-motion";
 
 import { useState } from "react";
 
-export default function Topbar() {
+/* ====================================================== */
+/* 🔥 TYPES */
+/* ====================================================== */
+
+interface TopbarProps {
+
+  title: string;
+
+  role: string;
+
+}
+
+/* ====================================================== */
+/* 🔥 COMPONENT */
+/* ====================================================== */
+
+export default function Topbar({
+
+  title,
+
+  role,
+
+}: TopbarProps) {
 
   /* ====================================================== */
   /* 🔥 STATES */
@@ -180,7 +200,7 @@ export default function Topbar() {
               "
             >
 
-              Admin Dashboard ⚡
+              {title} ⚡
 
             </motion.h1>
 
@@ -211,10 +231,11 @@ export default function Topbar() {
               "
             >
 
-              Monitor residents, manage hostel rooms,
-              track payments, handle complaints,
-              generate reports, and control complete
-              hostel operations with real-time analytics.
+              Logged in as {role}. Monitor residents,
+              manage hostel rooms, track payments,
+              handle complaints, generate reports,
+              and control hostel operations with
+              real-time analytics.
 
             </motion.p>
 
@@ -521,9 +542,7 @@ export default function Topbar() {
           "
         >
 
-          {/* ========================================= */}
-          {/* 🔥 CARD 1 */}
-          {/* ========================================= */}
+          {/* CARD 1 */}
 
           <div className="
           relative
@@ -534,12 +553,7 @@ export default function Topbar() {
           bg-white/[0.05]
           p-5
           backdrop-blur-2xl
-          hover:-translate-y-1
-          transition-all
-          duration-300
           ">
-
-            {/* GLOW */}
 
             <div className="
             absolute
@@ -616,9 +630,7 @@ export default function Topbar() {
 
           </div>
 
-          {/* ========================================= */}
-          {/* 🔥 CARD 2 */}
-          {/* ========================================= */}
+          {/* CARD 2 */}
 
           <div className="
           relative
@@ -629,9 +641,6 @@ export default function Topbar() {
           bg-white/[0.05]
           p-5
           backdrop-blur-2xl
-          hover:-translate-y-1
-          transition-all
-          duration-300
           ">
 
             <div className="
@@ -711,9 +720,7 @@ export default function Topbar() {
 
           </div>
 
-          {/* ========================================= */}
-          {/* 🔥 CARD 3 */}
-          {/* ========================================= */}
+          {/* CARD 3 */}
 
           <div className="
           relative
@@ -724,9 +731,6 @@ export default function Topbar() {
           bg-white/[0.05]
           p-5
           backdrop-blur-2xl
-          hover:-translate-y-1
-          transition-all
-          duration-300
           ">
 
             <div className="
@@ -806,9 +810,7 @@ export default function Topbar() {
 
           </div>
 
-          {/* ========================================= */}
-          {/* 🔥 CARD 4 */}
-          {/* ========================================= */}
+          {/* CARD 4 */}
 
           <div className="
           relative
@@ -819,9 +821,6 @@ export default function Topbar() {
           bg-white/[0.05]
           p-5
           backdrop-blur-2xl
-          hover:-translate-y-1
-          transition-all
-          duration-300
           ">
 
             <div className="
@@ -901,9 +900,7 @@ export default function Topbar() {
 
           </div>
 
-          {/* ========================================= */}
-          {/* 🔥 CARD 5 */}
-          {/* ========================================= */}
+          {/* CARD 5 */}
 
           <div className="
           relative
@@ -914,9 +911,6 @@ export default function Topbar() {
           bg-white/[0.05]
           p-5
           backdrop-blur-2xl
-          hover:-translate-y-1
-          transition-all
-          duration-300
           ">
 
             <div className="
@@ -994,9 +988,7 @@ export default function Topbar() {
 
           </div>
 
-          {/* ========================================= */}
-          {/* 🔥 CARD 6 */}
-          {/* ========================================= */}
+          {/* CARD 6 */}
 
           <div className="
           relative
@@ -1007,9 +999,6 @@ export default function Topbar() {
           bg-white/[0.05]
           p-5
           backdrop-blur-2xl
-          hover:-translate-y-1
-          transition-all
-          duration-300
           ">
 
             <div className="
