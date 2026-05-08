@@ -1,42 +1,45 @@
 "use client";
 
-import {
-  LayoutDashboard,
-  BedDouble,
-  Users,
-  CreditCard,
-  UtensilsCrossed,
-  MessageSquareWarning,
-  FileBarChart2,
-  Bell,
-  Search,
-  Settings,
-  ShieldCheck,
-  IndianRupee,
-  AlertTriangle,
-  CheckCircle2,
-  Clock3,
-  ArrowUpRight,
-  ChevronRight,
-  Sparkles,
-  MoonStar,
-  Building2,
-  UserPlus,
-  DoorOpen,
-  BarChart3,
-  LogOut,
-  Activity,
-  Eye,
-  Download,
-  ClipboardList,
-  Plus,
-} from "lucide-react";
+import Sidebar from "@/components/admin/Sidebar";
+import Topbar from "@/components/admin/Topbar";
 
-import { motion } from "framer-motion";
+import DashboardPage from "@/components/admin/DashboardPage";
+import RoomsPage from "@/components/admin/RoomsPage";
+import ResidentsPage from "@/components/admin/ResidentsPage";
+import ComplaintsPage from "@/components/admin/ComplaintsPage";
+import ReportsPage from "@/components/admin/ReportsPage";
+import PaymentsPage from "@/components/admin/PaymentsPage";
+import FoodPage from "@/components/admin/FoodPage";
+
+import {
+  BedDouble,
+  CreditCard,
+  FileBarChart2,
+  LayoutDashboard,
+  LogOut,
+  MessageSquareWarning,
+  Users,
+  UtensilsCrossed,
+  Menu,
+} from "lucide-react";
 
 import { useState } from "react";
 
-export default function AdminDashboard() {
+export default function AdminDashboardPage() {
+
+  /* ====================================================== */
+  /* 🔥 ACTIVE PAGE */
+  /* ====================================================== */
+
+  const [activePage, setActivePage] =
+    useState("Dashboard");
+
+  /* ====================================================== */
+  /* 🔥 MOBILE SIDEBAR */
+  /* ====================================================== */
+
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
 
   /* ====================================================== */
   /* 🔥 MENU */
@@ -81,13 +84,6 @@ export default function AdminDashboard() {
   ];
 
   /* ====================================================== */
-  /* 🔥 STATES */
-  /* ====================================================== */
-
-  const [activeMenu, setActiveMenu] =
-    useState("Dashboard");
-
-  /* ====================================================== */
   /* 🔥 LOGOUT */
   /* ====================================================== */
 
@@ -105,180 +101,29 @@ export default function AdminDashboard() {
   };
 
   /* ====================================================== */
-  /* 🔥 STATS */
+  /* 🔥 CLOSE SIDEBAR */
   /* ====================================================== */
 
-  const stats = [
+  const handleMenuChange = (
+    page: string
+  ) => {
 
-    {
-      title: "Residents",
-      value: "248",
-      desc: "+12 this month",
-      glow:
-        "from-purple-500 to-pink-500",
-    },
+    setActivePage(page);
 
-    {
-      title: "Occupancy",
-      value: "92%",
-      desc: "Hostel almost full",
-      glow:
-        "from-emerald-500 to-green-400",
-    },
-
-    {
-      title: "Revenue",
-      value: "₹4.8L",
-      desc: "Monthly collection",
-      glow:
-        "from-yellow-400 to-orange-400",
-    },
-
-    {
-      title: "Pending",
-      value: "14",
-      desc: "Payment reminders",
-      glow:
-        "from-pink-500 to-rose-500",
-    },
-  ];
+    setSidebarOpen(false);
+  };
 
   /* ====================================================== */
-  /* 🔥 ROOMS */
+  /* 🔥 JSX */
   /* ====================================================== */
-
-  const rooms = [
-
-    {
-      room: "A-101",
-      type: "2 Sharing",
-      status: "Occupied",
-    },
-
-    {
-      room: "A-203",
-      type: "3 Sharing",
-      status: "Available",
-    },
-
-    {
-      room: "B-302",
-      type: "AC Deluxe",
-      status: "Maintenance",
-    },
-
-    {
-      room: "C-112",
-      type: "Single Room",
-      status: "Occupied",
-    },
-  ];
-
-  /* ====================================================== */
-  /* 🔥 RESIDENTS */
-  /* ====================================================== */
-
-  const residents = [
-
-    {
-      name: "Rahul Sharma",
-      room: "A-101",
-      status: "Active",
-    },
-
-    {
-      name: "Kiran Kumar",
-      room: "B-302",
-      status: "Pending",
-    },
-
-    {
-      name: "Aman Verma",
-      room: "A-203",
-      status: "Active",
-    },
-  ];
-
-  /* ====================================================== */
-  /* 🔥 PAYMENTS */
-  /* ====================================================== */
-
-  const payments = [
-
-    {
-      name: "Rahul Sharma",
-      amount: "₹8,500",
-      status: "Paid",
-    },
-
-    {
-      name: "Aman Verma",
-      amount: "₹8,500",
-      status: "Pending",
-    },
-
-    {
-      name: "Kiran Kumar",
-      amount: "₹12,500",
-      status: "Paid",
-    },
-  ];
-
-  /* ====================================================== */
-  /* 🔥 COMPLAINTS */
-  /* ====================================================== */
-
-  const complaints = [
-
-    {
-      title:
-        "WiFi issue on Floor 2",
-      priority: "High",
-    },
-
-    {
-      title:
-        "AC issue in Room 302",
-      priority: "Medium",
-    },
-
-    {
-      title:
-        "Laundry machine repair",
-      priority: "Low",
-    },
-  ];
-
-  /* ====================================================== */
-  /* 🔥 REPORTS */
-  /* ====================================================== */
-
-  const reports = [
-
-    {
-      title: "Monthly Revenue Report",
-      type: "Finance",
-    },
-
-    {
-      title: "Resident Activity Report",
-      type: "Residents",
-    },
-
-    {
-      title: "Complaint Analytics",
-      type: "Complaints",
-    },
-  ];
 
   return (
 
-    <div className="
-    min-h-screen
-    bg-[#050816]
-    flex
+    <main className="
     relative
+    min-h-screen
     overflow-hidden
+    bg-[#050816]
     ">
 
       {/* ================================================= */}
@@ -286,40 +131,46 @@ export default function AdminDashboard() {
       {/* ================================================= */}
 
       <div className="
-      absolute
+      fixed
       inset-0
       overflow-hidden
       pointer-events-none
       ">
+
+        {/* GRID */}
 
         <div className="
         absolute
         inset-0
         opacity-[0.03]
         [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-        [background-size:70px_70px]
+        [background-size:80px_80px]
         "></div>
+
+        {/* PURPLE */}
 
         <div className="
         absolute
-        top-[-250px]
-        left-[-250px]
-        w-[700px]
-        h-[700px]
+        top-[-300px]
+        left-[-300px]
+        w-[800px]
+        h-[800px]
         bg-purple-500/20
-        blur-[180px]
+        blur-[200px]
         rounded-full
         animate-pulse
         "></div>
 
+        {/* PINK */}
+
         <div className="
         absolute
-        bottom-[-250px]
-        right-[-250px]
-        w-[700px]
-        h-[700px]
+        bottom-[-300px]
+        right-[-300px]
+        w-[800px]
+        h-[800px]
         bg-pink-500/20
-        blur-[180px]
+        blur-[200px]
         rounded-full
         animate-pulse
         "></div>
@@ -327,1594 +178,296 @@ export default function AdminDashboard() {
       </div>
 
       {/* ================================================= */}
-      {/* 🔥 SIDEBAR */}
+      {/* 🔥 MOBILE OVERLAY */}
+      {/* ================================================= */}
+
+      {
+        sidebarOpen && (
+
+          <div
+            onClick={() =>
+              setSidebarOpen(false)
+            }
+            className="
+            fixed
+            inset-0
+            bg-black/60
+            backdrop-blur-sm
+            z-40
+            lg:hidden
+            "
+          />
+        )
+      }
+
+      {/* ================================================= */}
+      {/* 🔥 MAIN LAYOUT */}
       {/* ================================================= */}
 
       <div className="
-      hidden
-      lg:flex
       relative
       z-10
-      flex-col
-      w-[310px]
-      border-r
-      border-white/10
-      bg-white/[0.04]
-      backdrop-blur-3xl
-      p-7
+      flex
+      min-h-screen
       ">
 
-        {/* LOGO */}
+        {/* ================================================= */}
+        {/* 🔥 SIDEBAR */}
+        {/* ================================================= */}
 
-        <div className="
-        flex
-        items-center
-        justify-between
-        mb-10
-        ">
+        <div className={`
+        fixed
+        lg:relative
+        top-0
+        left-0
+        z-50
+        h-screen
+        transition-all
+        duration-300
 
-          <div className="
-          flex
-          items-center
-          gap-4
-          ">
+        ${
+          sidebarOpen
+            ? "translate-x-0"
+            : "-translate-x-full lg:translate-x-0"
+        }
+        `}>
 
-            <div className="
-            w-14
-            h-14
-            rounded-2xl
-            bg-gradient-to-r
-            from-purple-500
-            via-pink-500
-            to-yellow-400
-            flex
-            items-center
-            justify-center
-            text-black
-            font-black
-            text-xl
-            ">
+          <Sidebar
 
-              A
+            activeMenu={activePage}
 
-            </div>
+            setActiveMenu={
+              handleMenuChange
+            }
 
-            <div>
+            closeSidebar={() =>
+              setSidebarOpen(false)
+            }
 
-              <h2 className="
-              text-white
-              text-2xl
-              font-bold
-              ">
-
-                SVBS
-
-              </h2>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Admin Dashboard
-
-              </p>
-
-            </div>
-
-          </div>
-
-          <button
-            onClick={handleLogout}
-            className="
-            w-11
-            h-11
-            rounded-xl
-            border
-            border-white/10
-            bg-white/[0.05]
-            flex
-            items-center
-            justify-center
-            text-gray-400
-            hover:text-red-400
-            transition
-            "
-          >
-
-            <LogOut size={20} />
-
-          </button>
+          />
 
         </div>
 
-        {/* ADMIN CARD */}
-
-        <div className="
-        rounded-[30px]
-        border
-        border-white/10
-        bg-white/[0.05]
-        p-6
-        mb-8
-        ">
-
-          <div className="
-          flex
-          items-center
-          gap-4
-          mb-5
-          ">
-
-            <div className="
-            w-16
-            h-16
-            rounded-2xl
-            bg-gradient-to-r
-            from-purple-500
-            to-pink-500
-            flex
-            items-center
-            justify-center
-            text-white
-            ">
-
-              <ShieldCheck size={28} />
-
-            </div>
-
-            <div>
-
-              <h3 className="
-              text-white
-              text-xl
-              font-bold
-              ">
-
-                Admin Access
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                admin@svbs.com
-
-              </p>
-
-            </div>
-
-          </div>
-
-          <div className="
-          flex
-          flex-wrap
-          gap-3
-          ">
-
-            <div className="
-            px-4
-            py-2
-            rounded-full
-            bg-emerald-500/10
-            border
-            border-emerald-500/20
-            text-emerald-300
-            text-xs
-            ">
-
-              Full Access
-
-            </div>
-
-            <div className="
-            px-4
-            py-2
-            rounded-full
-            bg-purple-500/10
-            border
-            border-purple-500/20
-            text-purple-300
-            text-xs
-            ">
-
-              System Control
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* MENU */}
+        {/* ================================================= */}
+        {/* 🔥 CONTENT */}
+        {/* ================================================= */}
 
         <div className="
         flex-1
-        space-y-3
-        ">
-
-          {menu.map((item, i) => {
-
-            const Icon = item.icon;
-
-            return (
-
-              <button
-                key={i}
-                onClick={() =>
-                  setActiveMenu(
-                    item.name
-                  )
-                }
-                className={`
-                w-full
-                flex
-                items-center
-                justify-between
-                px-5
-                py-4
-                rounded-2xl
-                border
-                transition-all
-                duration-300
-
-                ${
-                  activeMenu === item.name
-                    ? "bg-gradient-to-r from-purple-500 to-pink-500 border-purple-500/20 text-white"
-                    : "bg-white/[0.04] border-white/10 text-gray-300 hover:border-purple-500/20 hover:text-white"
-                }
-                `}
-              >
-
-                <div className="
-                flex
-                items-center
-                gap-4
-                ">
-
-                  <Icon size={20} />
-
-                  <span>
-
-                    {item.name}
-
-                  </span>
-
-                </div>
-
-                <ChevronRight size={18} />
-
-              </button>
-            );
-          })}
-
-        </div>
-
-        {/* BOTTOM */}
-
-        <div className="
-        mt-8
-        rounded-2xl
-        border
-        border-white/10
-        bg-white/[0.04]
-        p-5
         flex
-        items-center
-        justify-between
+        flex-col
+        min-h-screen
+        overflow-hidden
         ">
 
-          <div>
-
-            <h3 className="
-            text-white
-            font-semibold
-            mb-1
-            ">
-
-              Secure Mode
-
-            </h3>
-
-            <p className="
-            text-gray-400
-            text-sm
-            ">
-
-              Admin Control Active
-
-            </p>
-
-          </div>
+          {/* ================================================= */}
+          {/* 🔥 MOBILE TOPBAR */}
+          {/* ================================================= */}
 
           <div className="
-          w-12
-          h-12
-          rounded-xl
-          bg-gradient-to-r
-          from-purple-500
-          to-pink-500
+          lg:hidden
+          sticky
+          top-0
+          z-30
+          px-5
+          py-4
+          border-b
+          border-white/10
+          bg-[#050816]/90
+          backdrop-blur-3xl
           flex
           items-center
-          justify-center
-          text-white
+          justify-between
           ">
 
-            <MoonStar size={20} />
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* ================================================= */}
-      {/* 🔥 MAIN */}
-      {/* ================================================= */}
-
-      <div className="
-      relative
-      z-10
-      flex-1
-      h-screen
-      overflow-y-auto
-      ">
-
-        {/* TOPBAR */}
-
-        <div className="
-        sticky
-        top-0
-        z-20
-        border-b
-        border-white/10
-        bg-[#050816]/80
-        backdrop-blur-3xl
-        px-6
-        lg:px-10
-        py-6
-        ">
-
-          <div className="
-          flex
-          flex-col
-          xl:flex-row
-          xl:items-center
-          xl:justify-between
-          gap-6
-          ">
-
-            <div>
-
-              <div className="
-              inline-flex
-              items-center
-              gap-2
-              px-4
-              py-2
-              rounded-full
-              border
-              border-white/10
-              bg-white/[0.04]
-              text-xs
-              text-gray-400
-              tracking-[0.25em]
-              uppercase
-              mb-5
-              ">
-
-                <Sparkles size={13} />
-
-                Hostel Management
-
-              </div>
-
-              <h1 className="
-              text-4xl
-              lg:text-6xl
-              font-black
-              text-white
-              mb-3
-              ">
-
-                Admin Dashboard ⚡
-
-              </h1>
-
-              <p className="
-              text-gray-400
-              text-lg
-              ">
-
-                Monitor rooms, residents, revenue and complaints.
-
-              </p>
-
-            </div>
+            {/* LEFT */}
 
             <div className="
             flex
             items-center
-            gap-4
+            gap-3
             ">
 
-              <div className="
-              hidden
-              lg:flex
-              items-center
-              gap-3
-              px-5
-              py-4
-              rounded-2xl
-              border
-              border-white/10
-              bg-white/[0.04]
-              min-w-[300px]
-              ">
+              <button
 
-                <Search
-                  size={18}
-                  className="
-                  text-gray-500
-                  "
-                />
+                onClick={() =>
+                  setSidebarOpen(true)
+                }
 
-                <input
-                  placeholder="Search..."
-                  className="
-                  bg-transparent
-                  outline-none
-                  text-white
-                  placeholder:text-gray-500
-                  w-full
-                  "
-                />
+                className="
+                w-11
+                h-11
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/[0.05]
+                flex
+                items-center
+                justify-center
+                text-white
+                "
+              >
 
-              </div>
-
-              <button className="
-              relative
-              w-14
-              h-14
-              rounded-2xl
-              border
-              border-white/10
-              bg-white/[0.04]
-              flex
-              items-center
-              justify-center
-              text-gray-300
-              ">
-
-                <Bell size={22} />
-
-                <span className="
-                absolute
-                top-3
-                right-3
-                w-2.5
-                h-2.5
-                rounded-full
-                bg-pink-500
-                animate-pulse
-                "></span>
+                <Menu size={22} />
 
               </button>
 
-              <button className="
-              w-14
-              h-14
-              rounded-2xl
-              border
-              border-white/10
-              bg-white/[0.04]
-              flex
-              items-center
-              justify-center
-              text-gray-300
-              ">
+              <div>
 
-                <Settings size={22} />
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* CONTENT */}
-
-        <div className="
-        p-6
-        lg:p-10
-        ">
-
-          {/* DASHBOARD */}
-
-          {activeMenu ===
-            "Dashboard" && (
-
-            <>
-
-              {/* STATS */}
-
-              <div className="
-              grid
-              sm:grid-cols-2
-              xl:grid-cols-4
-              gap-7
-              mb-10
-              ">
-
-                {stats.map((card, i) => (
-
-                  <motion.div
-                    key={i}
-                    initial={{
-                      opacity: 0,
-                      y: 40,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      delay: i * 0.08,
-                    }}
-                    className="
-                    relative
-                    overflow-hidden
-                    rounded-[35px]
-                    border
-                    border-white/10
-                    bg-white/[0.05]
-                    p-7
-                    "
-                  >
-
-                    <div className={`
-                    absolute
-                    top-0
-                    right-0
-                    w-40
-                    h-40
-                    rounded-full
-                    blur-[90px]
-                    opacity-30
-                    bg-gradient-to-r
-                    ${card.glow}
-                    `}></div>
-
-                    <div className="
-                    relative
-                    z-10
-                    ">
-
-                      <p className="
-                      text-gray-400
-                      mb-4
-                      ">
-
-                        {card.title}
-
-                      </p>
-
-                      <h2 className="
-                      text-5xl
-                      font-black
-                      text-white
-                      mb-3
-                      ">
-
-                        {card.value}
-
-                      </h2>
-
-                      <p className="
-                      text-gray-400
-                      ">
-
-                        {card.desc}
-
-                      </p>
-
-                    </div>
-
-                  </motion.div>
-                ))}
-
-              </div>
-
-              {/* GRID */}
-
-              <div className="
-              grid
-              xl:grid-cols-[1.2fr_0.8fr]
-              gap-8
-              ">
-
-                {/* LEFT */}
-
-                <div className="
-                space-y-8
-                ">
-
-                  {/* QUICK ACTIONS */}
-
-                  <div className="
-                  rounded-[35px]
-                  border
-                  border-white/10
-                  bg-white/[0.05]
-                  p-8
-                  ">
-
-                    <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-10
-                    ">
-
-                      <div>
-
-                        <h2 className="
-                        text-3xl
-                        font-bold
-                        text-white
-                        mb-3
-                        ">
-
-                          Quick Actions
-
-                        </h2>
-
-                        <p className="
-                        text-gray-400
-                        ">
-
-                          Manage hostel instantly.
-
-                        </p>
-
-                      </div>
-
-                      <div className="
-                      w-16
-                      h-16
-                      rounded-2xl
-                      bg-gradient-to-r
-                      from-purple-500
-                      to-pink-500
-                      flex
-                      items-center
-                      justify-center
-                      text-white
-                      ">
-
-                        <Sparkles size={28} />
-
-                      </div>
-
-                    </div>
-
-                    <div className="
-                    grid
-                    md:grid-cols-2
-                    gap-5
-                    ">
-
-                      <button className="
-                      rounded-[28px]
-                      bg-gradient-to-r
-                      from-purple-500
-                      via-pink-500
-                      to-yellow-400
-                      p-7
-                      text-left
-                      text-white
-                      ">
-
-                        <UserPlus
-                          size={32}
-                          className="mb-6"
-                        />
-
-                        <h3 className="
-                        text-2xl
-                        font-bold
-                        mb-3
-                        ">
-
-                          Add Resident
-
-                        </h3>
-
-                        <p className="
-                        text-white/80
-                        ">
-
-                          Register new students quickly.
-
-                        </p>
-
-                      </button>
-
-                      <button className="
-                      rounded-[28px]
-                      border
-                      border-white/10
-                      bg-white/[0.04]
-                      p-7
-                      text-left
-                      ">
-
-                        <DoorOpen
-                          size={32}
-                          className="
-                          text-purple-300
-                          mb-6
-                          "
-                        />
-
-                        <h3 className="
-                        text-2xl
-                        font-bold
-                        text-white
-                        mb-3
-                        ">
-
-                          Manage Rooms
-
-                        </h3>
-
-                        <p className="
-                        text-gray-400
-                        ">
-
-                          Update room availability.
-
-                        </p>
-
-                      </button>
-
-                    </div>
-
-                  </div>
-
-                  {/* ROOMS */}
-
-                  <div className="
-                  rounded-[35px]
-                  border
-                  border-white/10
-                  bg-white/[0.05]
-                  p-8
-                  ">
-
-                    <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-8
-                    ">
-
-                      <h2 className="
-                      text-3xl
-                      font-bold
-                      text-white
-                      ">
-
-                        Room Overview
-
-                      </h2>
-
-                      <Building2
-                        size={28}
-                        className="
-                        text-purple-300
-                        "
-                      />
-
-                    </div>
-
-                    <div className="
-                    space-y-5
-                    ">
-
-                      {rooms.map(
-                        (room, i) => (
-
-                          <div
-                            key={i}
-                            className="
-                            rounded-[28px]
-                            border
-                            border-white/10
-                            bg-white/[0.04]
-                            p-6
-                            flex
-                            flex-col
-                            md:flex-row
-                            md:items-center
-                            md:justify-between
-                            gap-5
-                            "
-                          >
-
-                            <div>
-
-                              <h3 className="
-                              text-white
-                              text-xl
-                              font-bold
-                              mb-2
-                              ">
-
-                                {room.room}
-
-                              </h3>
-
-                              <p className="
-                              text-gray-400
-                              ">
-
-                                {room.type}
-
-                              </p>
-
-                            </div>
-
-                            <div className={`
-                            px-5
-                            py-3
-                            rounded-full
-                            text-sm
-                            font-semibold
-
-                            ${
-                              room.status ===
-                              "Occupied"
-                                ? "bg-red-500/10 text-red-300"
-                                : room.status ===
-                                  "Available"
-                                ? "bg-emerald-500/10 text-emerald-300"
-                                : "bg-yellow-500/10 text-yellow-300"
-                            }
-                            `}>
-
-                              {room.status}
-
-                            </div>
-
-                          </div>
-                        )
-                      )}
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                {/* RIGHT */}
-
-                <div className="
-                space-y-8
-                ">
-
-                  {/* PAYMENTS */}
-
-                  <div className="
-                  rounded-[35px]
-                  border
-                  border-white/10
-                  bg-white/[0.05]
-                  p-8
-                  ">
-
-                    <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-8
-                    ">
-
-                      <h2 className="
-                      text-3xl
-                      font-bold
-                      text-white
-                      ">
-
-                        Payments
-
-                      </h2>
-
-                      <IndianRupee
-                        size={28}
-                        className="
-                        text-yellow-300
-                        "
-                      />
-
-                    </div>
-
-                    <div className="
-                    space-y-5
-                    ">
-
-                      {payments.map(
-                        (item, i) => (
-
-                          <div
-                            key={i}
-                            className="
-                            rounded-2xl
-                            border
-                            border-white/10
-                            bg-white/[0.04]
-                            p-5
-                            flex
-                            items-center
-                            justify-between
-                            "
-                          >
-
-                            <div>
-
-                              <h3 className="
-                              text-white
-                              font-semibold
-                              mb-2
-                              ">
-
-                                {item.name}
-
-                              </h3>
-
-                              <p className="
-                              text-gray-400
-                              ">
-
-                                {item.amount}
-
-                              </p>
-
-                            </div>
-
-                            <div className={`
-                            px-4
-                            py-2
-                            rounded-full
-                            text-sm
-
-                            ${
-                              item.status ===
-                              "Paid"
-                                ? "bg-emerald-500/10 text-emerald-300"
-                                : "bg-red-500/10 text-red-300"
-                            }
-                            `}>
-
-                              {item.status}
-
-                            </div>
-
-                          </div>
-                        )
-                      )}
-
-                    </div>
-
-                  </div>
-
-                  {/* COMPLAINTS */}
-
-                  <div className="
-                  rounded-[35px]
-                  border
-                  border-white/10
-                  bg-white/[0.05]
-                  p-8
-                  ">
-
-                    <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-8
-                    ">
-
-                      <h2 className="
-                      text-3xl
-                      font-bold
-                      text-white
-                      ">
-
-                        Complaints
-
-                      </h2>
-
-                      <AlertTriangle
-                        size={28}
-                        className="
-                        text-pink-300
-                        "
-                      />
-
-                    </div>
-
-                    <div className="
-                    space-y-5
-                    ">
-
-                      {complaints.map(
-                        (item, i) => (
-
-                          <div
-                            key={i}
-                            className="
-                            rounded-2xl
-                            border
-                            border-white/10
-                            bg-white/[0.04]
-                            p-5
-                            "
-                          >
-
-                            <div className="
-                            flex
-                            items-center
-                            justify-between
-                            gap-4
-                            mb-4
-                            ">
-
-                              <h3 className="
-                              text-white
-                              font-medium
-                              ">
-
-                                {item.title}
-
-                              </h3>
-
-                              <div className={`
-                              px-3
-                              py-1
-                              rounded-full
-                              text-xs
-
-                              ${
-                                item.priority ===
-                                "High"
-                                  ? "bg-red-500/10 text-red-300"
-                                  : item.priority ===
-                                    "Medium"
-                                  ? "bg-yellow-500/10 text-yellow-300"
-                                  : "bg-emerald-500/10 text-emerald-300"
-                              }
-                              `}>
-
-                                {item.priority}
-
-                              </div>
-
-                            </div>
-
-                            <button className="
-                            text-purple-300
-                            text-sm
-                            ">
-
-                              View Details →
-
-                            </button>
-
-                          </div>
-                        )
-                      )}
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </>
-          )}
-
-          {/* ROOMS PAGE */}
-
-          {activeMenu ===
-            "Rooms" && (
-
-            <div>
-
-              <div className="
-              flex
-              flex-col
-              lg:flex-row
-              lg:items-center
-              lg:justify-between
-              gap-6
-              mb-10
-              ">
-
-                <div>
-
-                  <h1 className="
-                  text-5xl
-                  font-black
-                  text-white
-                  mb-4
-                  ">
-
-                    Rooms Management 🏨
-
-                  </h1>
-
-                  <p className="
-                  text-gray-400
-                  text-lg
-                  ">
-
-                    Manage hostel rooms and availability.
-
-                  </p>
-
-                </div>
-
-                <button className="
-                px-7
-                py-4
-                rounded-2xl
-                bg-gradient-to-r
-                from-purple-500
-                to-pink-500
+                <h2 className="
                 text-white
-                font-semibold
-                flex
-                items-center
-                gap-3
+                text-lg
+                font-bold
                 ">
 
-                  <Plus size={20} />
+                  SVBS Hostel
 
-                  Add Room
-
-                </button>
-
-              </div>
-
-              <div className="
-              grid
-              md:grid-cols-2
-              xl:grid-cols-3
-              gap-7
-              ">
-
-                {rooms.map((room, i) => (
-
-                  <div
-                    key={i}
-                    className="
-                    rounded-[35px]
-                    border
-                    border-white/10
-                    bg-white/[0.05]
-                    p-7
-                    "
-                  >
-
-                    <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-8
-                    ">
-
-                      <div className="
-                      w-16
-                      h-16
-                      rounded-2xl
-                      bg-gradient-to-r
-                      from-purple-500
-                      to-pink-500
-                      flex
-                      items-center
-                      justify-center
-                      text-white
-                      ">
-
-                        <BedDouble size={30} />
-
-                      </div>
-
-                      <div className={`
-                      px-4
-                      py-2
-                      rounded-full
-                      text-xs
-
-                      ${
-                        room.status ===
-                        "Occupied"
-                          ? "bg-red-500/10 text-red-300"
-                          : room.status ===
-                            "Available"
-                          ? "bg-emerald-500/10 text-emerald-300"
-                          : "bg-yellow-500/10 text-yellow-300"
-                      }
-                      `}>
-
-                        {room.status}
-
-                      </div>
-
-                    </div>
-
-                    <h2 className="
-                    text-3xl
-                    font-black
-                    text-white
-                    mb-3
-                    ">
-
-                      {room.room}
-
-                    </h2>
-
-                    <p className="
-                    text-gray-400
-                    mb-8
-                    ">
-
-                      {room.type}
-
-                    </p>
-
-                    <button className="
-                    w-full
-                    py-4
-                    rounded-2xl
-                    border
-                    border-white/10
-                    bg-white/[0.04]
-                    text-gray-300
-                    ">
-
-                      Manage Room
-
-                    </button>
-
-                  </div>
-                ))}
-
-              </div>
-
-            </div>
-          )}
-
-          {/* RESIDENTS */}
-
-          {activeMenu ===
-            "Residents" && (
-
-            <div>
-
-              <div className="
-              flex
-              flex-col
-              lg:flex-row
-              lg:items-center
-              lg:justify-between
-              gap-6
-              mb-10
-              ">
-
-                <div>
-
-                  <h1 className="
-                  text-5xl
-                  font-black
-                  text-white
-                  mb-4
-                  ">
-
-                    Residents 👨‍🎓
-
-                  </h1>
-
-                  <p className="
-                  text-gray-400
-                  text-lg
-                  ">
-
-                    Manage all hostel residents.
-
-                  </p>
-
-                </div>
-
-                <button className="
-                px-7
-                py-4
-                rounded-2xl
-                bg-gradient-to-r
-                from-purple-500
-                to-pink-500
-                text-white
-                font-semibold
-                flex
-                items-center
-                gap-3
-                ">
-
-                  <UserPlus size={20} />
-
-                  Add Resident
-
-                </button>
-
-              </div>
-
-              <div className="
-              space-y-5
-              ">
-
-                {residents.map(
-                  (item, i) => (
-
-                    <div
-                      key={i}
-                      className="
-                      rounded-[30px]
-                      border
-                      border-white/10
-                      bg-white/[0.05]
-                      p-7
-                      flex
-                      flex-col
-                      lg:flex-row
-                      lg:items-center
-                      lg:justify-between
-                      gap-6
-                      "
-                    >
-
-                      <div className="
-                      flex
-                      items-center
-                      gap-5
-                      ">
-
-                        <div className="
-                        w-16
-                        h-16
-                        rounded-2xl
-                        bg-gradient-to-r
-                        from-purple-500
-                        to-pink-500
-                        flex
-                        items-center
-                        justify-center
-                        text-white
-                        ">
-
-                          <Users size={28} />
-
-                        </div>
-
-                        <div>
-
-                          <h3 className="
-                          text-white
-                          text-2xl
-                          font-bold
-                          mb-2
-                          ">
-
-                            {item.name}
-
-                          </h3>
-
-                          <p className="
-                          text-gray-400
-                          ">
-
-                            Room {item.room}
-
-                          </p>
-
-                        </div>
-
-                      </div>
-
-                      <div className="
-                      flex
-                      items-center
-                      gap-4
-                      ">
-
-                        <div className={`
-                        px-5
-                        py-3
-                        rounded-full
-                        text-sm
-
-                        ${
-                          item.status ===
-                          "Active"
-                            ? "bg-emerald-500/10 text-emerald-300"
-                            : "bg-yellow-500/10 text-yellow-300"
-                        }
-                        `}>
-
-                          {item.status}
-
-                        </div>
-
-                        <button className="
-                        w-12
-                        h-12
-                        rounded-xl
-                        border
-                        border-white/10
-                        bg-white/[0.04]
-                        flex
-                        items-center
-                        justify-center
-                        text-gray-300
-                        ">
-
-                          <Eye size={20} />
-
-                        </button>
-
-                      </div>
-
-                    </div>
-                  )
-                )}
-
-              </div>
-
-            </div>
-          )}
-
-          {/* REPORTS */}
-
-          {activeMenu ===
-            "Reports" && (
-
-            <div>
-
-              <div className="
-              mb-10
-              ">
-
-                <h1 className="
-                text-5xl
-                font-black
-                text-white
-                mb-4
-                ">
-
-                  Reports & Analytics 📊
-
-                </h1>
+                </h2>
 
                 <p className="
+                text-xs
                 text-gray-400
-                text-lg
                 ">
 
-                  Download hostel management reports.
+                  Admin Dashboard
 
                 </p>
 
               </div>
 
-              <div className="
-              grid
-              md:grid-cols-2
-              xl:grid-cols-3
-              gap-7
-              ">
-
-                {reports.map(
-                  (item, i) => (
-
-                    <div
-                      key={i}
-                      className="
-                      rounded-[35px]
-                      border
-                      border-white/10
-                      bg-white/[0.05]
-                      p-7
-                      "
-                    >
-
-                      <div className="
-                      w-16
-                      h-16
-                      rounded-2xl
-                      bg-gradient-to-r
-                      from-purple-500
-                      to-pink-500
-                      flex
-                      items-center
-                      justify-center
-                      text-white
-                      mb-8
-                      ">
-
-                        <ClipboardList size={28} />
-
-                      </div>
-
-                      <h2 className="
-                      text-2xl
-                      font-bold
-                      text-white
-                      mb-3
-                      ">
-
-                        {item.title}
-
-                      </h2>
-
-                      <p className="
-                      text-gray-400
-                      mb-8
-                      ">
-
-                        {item.type}
-
-                      </p>
-
-                      <button className="
-                      w-full
-                      py-4
-                      rounded-2xl
-                      bg-gradient-to-r
-                      from-purple-500
-                      to-pink-500
-                      text-white
-                      font-semibold
-                      flex
-                      items-center
-                      justify-center
-                      gap-3
-                      ">
-
-                        <Download size={20} />
-
-                        Download Report
-
-                      </button>
-
-                    </div>
-                  )
-                )}
-
-              </div>
-
             </div>
-          )}
+
+          </div>
+
+          {/* ================================================= */}
+          {/* 🔥 TOPBAR */}
+          {/* ================================================= */}
+
+          <Topbar
+            title={activePage}
+            role="Admin"
+          />
+
+          {/* ================================================= */}
+          {/* 🔥 PAGE CONTENT */}
+          {/* ================================================= */}
+
+          <div className="
+          flex-1
+          overflow-y-auto
+          p-4
+          sm:p-6
+          lg:p-8
+          xl:p-10
+          ">
+
+            {
+              activePage ===
+              "Dashboard" && (
+
+                <DashboardPage />
+
+              )
+            }
+
+            {
+              activePage ===
+              "Rooms" && (
+
+                <RoomsPage />
+
+              )
+            }
+
+            {
+              activePage ===
+              "Residents" && (
+
+                <ResidentsPage />
+
+              )
+            }
+
+            {
+              activePage ===
+              "Payments" && (
+
+                <PaymentsPage />
+
+              )
+            }
+
+            {
+              activePage ===
+              "Food Menu" && (
+
+                <FoodPage />
+
+              )
+            }
+
+            {
+              activePage ===
+              "Complaints" && (
+
+                <ComplaintsPage />
+
+              )
+            }
+
+            {
+              activePage ===
+              "Reports" && (
+
+                <ReportsPage />
+
+              )
+            }
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
+      {/* ================================================= */}
+      {/* 🔥 MOBILE LOGOUT */}
+      {/* ================================================= */}
+
+      <button
+
+        onClick={handleLogout}
+
+        className="
+        lg:hidden
+        fixed
+        bottom-6
+        right-6
+        z-40
+        w-16
+        h-16
+        rounded-2xl
+        bg-gradient-to-r
+        from-red-500
+        via-pink-500
+        to-orange-500
+        text-white
+        shadow-[0_0_40px_rgba(239,68,68,0.45)]
+        flex
+        items-center
+        justify-center
+        hover:scale-110
+        active:scale-95
+        transition-all
+        duration-300
+        "
+
+      >
+
+        <LogOut size={24} />
+
+      </button>
+
+    </main>
   );
 }
