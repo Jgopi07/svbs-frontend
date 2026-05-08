@@ -177,28 +177,7 @@ export default function AdminDashboardPage() {
 
       </div>
 
-      {/* ================================================= */}
-      {/* 🔥 MOBILE OVERLAY */}
-      {/* ================================================= */}
-
-      {
-        sidebarOpen && (
-
-          <div
-            onClick={() =>
-              setSidebarOpen(false)
-            }
-            className="
-fixed
-inset-0
-bg-black/60
-
-z-30
-lg:hidden
-"
-          />
-        )
-      }
+      
 
       {/* ================================================= */}
       {/* 🔥 MAIN LAYOUT */}
