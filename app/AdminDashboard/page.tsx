@@ -233,13 +233,17 @@ export default function AdminDashboardPage() {
 
           <Sidebar
 
-            activeMenu={activePage}
+  activeMenu={activePage}
 
-            setActiveMenu={
-              handleMenuChange
-            }
+  setActiveMenu={
+    handleMenuChange
+  }
 
-          />
+  closeSidebar={() =>
+    setSidebarOpen(false)
+  }
+
+/>
 
         </div>
 
