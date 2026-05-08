@@ -46,26 +46,32 @@ export default function AdminDashboardPage() {
       name: "Dashboard",
       icon: LayoutDashboard,
     },
+
     {
       name: "Rooms",
       icon: BedDouble,
     },
+
     {
       name: "Residents",
       icon: Users,
     },
+
     {
       name: "Payments",
       icon: CreditCard,
     },
+
     {
       name: "Food Menu",
       icon: UtensilsCrossed,
     },
+
     {
       name: "Complaints",
       icon: MessageSquareWarning,
     },
+
     {
       name: "Reports",
       icon: FileBarChart2,
@@ -87,6 +93,19 @@ export default function AdminDashboardPage() {
     );
 
     window.location.href = "/";
+  };
+
+  /* ====================================================== */
+  /* 🔥 CLOSE SIDEBAR */
+  /* ====================================================== */
+
+  const handleMenuChange = (
+    page: string
+  ) => {
+
+    setActivePage(page);
+
+    setSidebarOpen(false);
   };
 
   /* ====================================================== */
@@ -167,7 +186,7 @@ export default function AdminDashboardPage() {
             className="
             fixed
             inset-0
-            bg-black/50
+            bg-black/60
             z-40
             lg:hidden
             "
@@ -177,7 +196,7 @@ export default function AdminDashboardPage() {
       }
 
       {/* ================================================= */}
-      {/* 🔥 MAIN */}
+      {/* 🔥 MAIN LAYOUT */}
       {/* ================================================= */}
 
       <div className="
@@ -194,11 +213,13 @@ export default function AdminDashboardPage() {
         <div className={`
         fixed
         lg:relative
+        top-0
+        left-0
         z-50
-        lg:z-10
         h-screen
-        transition-all
+        transition-transform
         duration-300
+        ease-in-out
 
         ${
           sidebarOpen
@@ -209,7 +230,9 @@ export default function AdminDashboardPage() {
 
           <Sidebar
             activeMenu={activePage}
-            setActiveMenu={setActivePage}
+            setActiveMenu={
+              handleMenuChange
+            }
           />
 
         </div>
@@ -218,24 +241,17 @@ export default function AdminDashboardPage() {
         {/* 🔥 CONTENT */}
         {/* ================================================= */}
 
-        <div className={`
+        <div className="
         flex-1
         flex
         flex-col
         min-h-screen
         overflow-hidden
-        transition-all
-        duration-300
-
-        ${
-          sidebarOpen
-            ? "blur-sm lg:blur-0"
-            : "blur-0"
-        }
-        `}>
+        lg:ml-0
+        ">
 
           {/* ================================================= */}
-          {/* 🔥 MOBILE TOPBAR */}
+          {/* 🔥 MOBILE HEADER */}
           {/* ================================================= */}
 
           <div className="
@@ -247,12 +263,14 @@ export default function AdminDashboardPage() {
           py-4
           border-b
           border-white/10
-          bg-[#050816]/90
-          backdrop-blur-3xl
+          bg-[#050816]/95
+          backdrop-blur-2xl
           flex
           items-center
           justify-between
           ">
+
+            {/* LEFT */}
 
             <div className="
             flex
@@ -261,9 +279,11 @@ export default function AdminDashboardPage() {
             ">
 
               <button
+
                 onClick={() =>
                   setSidebarOpen(true)
                 }
+
                 className="
                 w-11
                 h-11
@@ -276,6 +296,7 @@ export default function AdminDashboardPage() {
                 justify-center
                 text-white
                 "
+
               >
 
                 <Menu size={22} />
@@ -319,7 +340,7 @@ export default function AdminDashboardPage() {
           />
 
           {/* ================================================= */}
-          {/* 🔥 PAGE */}
+          {/* 🔥 PAGE CONTENT */}
           {/* ================================================= */}
 
           <div className="
@@ -399,7 +420,7 @@ export default function AdminDashboardPage() {
         fixed
         bottom-6
         right-6
-        z-50
+        z-40
         w-16
         h-16
         rounded-2xl
@@ -417,6 +438,7 @@ export default function AdminDashboardPage() {
         transition-all
         duration-300
         "
+
       >
 
         <LogOut size={24} />
