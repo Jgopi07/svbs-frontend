@@ -5,7 +5,6 @@ import {
   Search,
   Settings2,
   Sparkles,
-  ShieldCheck,
   CalendarDays,
   Activity,
   Wifi,
@@ -16,8 +15,6 @@ import {
   MoonStar,
   SunMedium,
   UserCircle2,
-  Clock3,
-  BadgeCheck,
 } from "lucide-react";
 
 import { motion } from "framer-motion";
@@ -28,13 +25,13 @@ import { useState } from "react";
 /* 🔥 TYPES */
 /* ====================================================== */
 
-interface TopbarProps {
+type TopbarProps = {
 
   title: string;
 
   role: string;
 
-}
+};
 
 /* ====================================================== */
 /* 🔥 COMPONENT */
@@ -85,42 +82,36 @@ export default function Topbar({
       title: "Residents",
       value: "248",
       icon: Users,
-      glow: "from-purple-500 to-pink-500",
     },
 
     {
       title: "Occupancy",
       value: "92%",
       icon: Building2,
-      glow: "from-pink-500 to-rose-500",
     },
 
     {
       title: "Revenue",
       value: "₹4.8L",
       icon: IndianRupee,
-      glow: "from-yellow-500 to-orange-500",
     },
 
     {
       title: "Pending",
       value: "14",
       icon: AlertTriangle,
-      glow: "from-red-500 to-pink-500",
     },
 
     {
       title: "Network",
       value: "Stable",
       icon: Wifi,
-      glow: "from-cyan-500 to-blue-500",
     },
 
     {
-      title: "Status",
+      title: "Admin",
       value: "Online",
       icon: UserCircle2,
-      glow: "from-indigo-500 to-purple-500",
     },
   ];
 
@@ -155,7 +146,7 @@ export default function Topbar({
       ">
 
         {/* ================================================= */}
-        {/* 🔥 TOP SECTION */}
+        {/* 🔥 TOP */}
         {/* ================================================= */}
 
         <div className="
@@ -167,13 +158,9 @@ export default function Topbar({
         gap-8
         ">
 
-          {/* ================================================= */}
-          {/* 🔥 LEFT */}
-          {/* ================================================= */}
+          {/* LEFT */}
 
           <div>
-
-            {/* BADGE */}
 
             <motion.div
 
@@ -187,10 +174,6 @@ export default function Topbar({
                 y: 0,
               }}
 
-              transition={{
-                duration: 0.5,
-              }}
-
               className="
               inline-flex
               items-center
@@ -201,7 +184,6 @@ export default function Topbar({
               border
               border-white/10
               bg-white/[0.05]
-              backdrop-blur-xl
               text-gray-300
               text-xs
               tracking-[0.25em]
@@ -217,11 +199,9 @@ export default function Topbar({
                 "
               />
 
-              SVBS Hostel Management
+              SVBS HOSTEL MANAGEMENT
 
             </motion.div>
-
-            {/* HEADING */}
 
             <motion.h1
 
@@ -233,10 +213,6 @@ export default function Topbar({
               animate={{
                 opacity: 1,
                 y: 0,
-              }}
-
-              transition={{
-                delay: 0.1,
               }}
 
               className="
@@ -254,8 +230,6 @@ export default function Topbar({
 
             </motion.h1>
 
-            {/* TEXT */}
-
             <motion.p
 
               initial={{
@@ -268,10 +242,6 @@ export default function Topbar({
                 y: 0,
               }}
 
-              transition={{
-                delay: 0.2,
-              }}
-
               className="
               text-gray-400
               text-base
@@ -281,19 +251,15 @@ export default function Topbar({
               "
             >
 
-              Welcome back {role}. Monitor hostel
-              residents, room occupancy, complaints,
-              reports, food management, payments and
-              complete hostel analytics from one
-              premium dashboard.
+              Welcome back {role}. Monitor residents,
+              rooms, complaints, reports, food
+              management, analytics and payments.
 
             </motion.p>
 
           </div>
 
-          {/* ================================================= */}
-          {/* 🔥 RIGHT */}
-          {/* ================================================= */}
+          {/* RIGHT */}
 
           <motion.div
 
@@ -305,10 +271,6 @@ export default function Topbar({
             animate={{
               opacity: 1,
               x: 0,
-            }}
-
-            transition={{
-              duration: 0.5,
             }}
 
             className="
@@ -332,9 +294,7 @@ export default function Topbar({
             border
             border-white/10
             bg-white/[0.05]
-            min-w-[350px]
-            backdrop-blur-xl
-            shadow-[0_0_30px_rgba(168,85,247,0.08)]
+            min-w-[340px]
             ">
 
               <Search
@@ -357,8 +317,8 @@ export default function Topbar({
                 type="text"
 
                 placeholder="
-                Search residents,
-                rooms, complaints...
+                Search rooms,
+                residents...
                 "
 
                 className="
@@ -367,7 +327,6 @@ export default function Topbar({
                 outline-none
                 text-white
                 placeholder:text-gray-500
-                text-sm
                 "
               />
 
@@ -386,18 +345,13 @@ export default function Topbar({
             border
             border-white/10
             bg-white/[0.05]
-            backdrop-blur-xl
             ">
 
               <div className="
               w-12
               h-12
               rounded-2xl
-              bg-gradient-to-r
-              from-purple-500/20
-              to-pink-500/20
-              border
-              border-white/10
+              bg-purple-500/20
               flex
               items-center
               justify-center
@@ -416,7 +370,6 @@ export default function Topbar({
                 text-white
                 text-sm
                 font-semibold
-                mb-1
                 ">
 
                   {formattedDate}
@@ -428,7 +381,7 @@ export default function Topbar({
                 text-xs
                 ">
 
-                  Live System Analytics
+                  Live Analytics
 
                 </p>
 
@@ -446,15 +399,10 @@ export default function Topbar({
             border
             border-white/10
             bg-white/[0.05]
-            backdrop-blur-xl
             flex
             items-center
             justify-center
             text-gray-300
-            hover:text-white
-            hover:border-pink-500/30
-            transition-all
-            duration-300
             ">
 
               <Bell size={24} />
@@ -468,8 +416,6 @@ export default function Topbar({
               rounded-full
               bg-pink-500
               animate-pulse
-              border
-              border-[#050816]
               "></span>
 
             </button>
@@ -483,15 +429,10 @@ export default function Topbar({
             border
             border-white/10
             bg-white/[0.05]
-            backdrop-blur-xl
             flex
             items-center
             justify-center
             text-gray-300
-            hover:text-white
-            hover:border-purple-500/30
-            transition-all
-            duration-300
             ">
 
               <Settings2
@@ -500,7 +441,7 @@ export default function Topbar({
 
             </button>
 
-            {/* DARK MODE */}
+            {/* MODE */}
 
             <button
 
@@ -517,15 +458,10 @@ export default function Topbar({
               border
               border-white/10
               bg-white/[0.05]
-              backdrop-blur-xl
               flex
               items-center
               justify-center
               text-gray-300
-              hover:text-white
-              hover:border-yellow-500/30
-              transition-all
-              duration-300
               "
             >
 
@@ -553,30 +489,13 @@ export default function Topbar({
         {/* 🔥 STATS */}
         {/* ================================================= */}
 
-        <motion.div
-
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-
-          transition={{
-            delay: 0.2,
-          }}
-
-          className="
-          grid
-          grid-cols-2
-          md:grid-cols-3
-          xl:grid-cols-6
-          gap-4
-          "
-        >
+        <div className="
+        grid
+        grid-cols-2
+        md:grid-cols-3
+        xl:grid-cols-6
+        gap-4
+        ">
 
           {stats.map((item, i) => {
 
@@ -587,102 +506,70 @@ export default function Topbar({
               <div
                 key={i}
                 className="
-                relative
-                overflow-hidden
                 rounded-[28px]
                 border
                 border-white/10
                 bg-white/[0.05]
                 p-5
-                backdrop-blur-2xl
-                hover:-translate-y-1
-                transition-all
-                duration-300
                 "
               >
 
-                {/* GLOW */}
-
-                <div className={`
-                absolute
-                top-0
-                right-0
-                w-28
-                h-28
-                rounded-full
-                blur-[70px]
-                opacity-30
-                bg-gradient-to-r
-                ${item.glow}
-                `}></div>
-
-                {/* CONTENT */}
-
                 <div className="
-                relative
-                z-10
+                flex
+                items-center
+                justify-between
+                mb-5
                 ">
 
                   <div className="
+                  w-12
+                  h-12
+                  rounded-2xl
+                  bg-white/[0.06]
                   flex
                   items-center
-                  justify-between
-                  mb-5
+                  justify-center
+                  text-white
                   ">
 
-                    <div className="
-                    w-12
-                    h-12
-                    rounded-2xl
-                    bg-white/[0.06]
-                    border
-                    border-white/10
-                    flex
-                    items-center
-                    justify-center
-                    text-white
-                    ">
-
-                      <Icon size={22} />
-
-                    </div>
-
-                    <Activity
-                      size={18}
-                      className="
-                      text-emerald-400
-                      "
-                    />
+                    <Icon size={22} />
 
                   </div>
 
-                  <h3 className="
-                  text-3xl
-                  font-black
-                  text-white
-                  mb-2
-                  ">
-
-                    {item.value}
-
-                  </h3>
-
-                  <p className="
-                  text-gray-400
-                  text-sm
-                  ">
-
-                    {item.title}
-
-                  </p>
+                  <Activity
+                    size={18}
+                    className="
+                    text-emerald-400
+                    "
+                  />
 
                 </div>
+
+                <h3 className="
+                text-3xl
+                font-black
+                text-white
+                mb-2
+                ">
+
+                  {item.value}
+
+                </h3>
+
+                <p className="
+                text-gray-400
+                text-sm
+                ">
+
+                  {item.title}
+
+                </p>
 
               </div>
             );
           })}
 
-        </motion.div>
+        </div>
 
       </div>
 
