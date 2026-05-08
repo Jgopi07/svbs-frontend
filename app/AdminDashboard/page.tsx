@@ -204,12 +204,18 @@ export default function AdminDashboardPage() {
       {/* 🔥 MAIN LAYOUT */}
       {/* ================================================= */}
 
-      <div className="
-      relative
-      z-10
-      flex
-      min-h-screen
-      ">
+      <div className={`
+relative
+z-10
+flex
+min-h-screen
+
+${
+  sidebarOpen
+    ? "h-screen overflow-hidden"
+    : ""
+}
+`}>
 
         {/* ================================================= */}
         {/* 🔥 SIDEBAR */}
