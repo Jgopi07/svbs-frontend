@@ -135,19 +135,19 @@ export default function Sidebar({
       }}
 
       className="
-flex
-flex-col
-w-[330px]
-h-screen
-border-r
-border-white/10
-bg-[#0b1020]
-backdrop-blur-3xl
-p-7
-relative
-overflow-y-auto
-shadow-[0_0_50px_rgba(0,0,0,0.45)]
-"
+      hidden
+      lg:flex
+      flex-col
+      w-[330px]
+      min-h-screen
+      border-r
+      border-white/10
+      bg-white/[0.04]
+      backdrop-blur-3xl
+      p-7
+      relative
+      overflow-hidden
+      "
     >
 
       {/* ================================================= */}
