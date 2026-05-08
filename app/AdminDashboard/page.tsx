@@ -257,13 +257,18 @@ ${
         {/* 🔥 CONTENT AREA */}
         {/* ================================================= */}
 
-        <div className="
-        relative
-        z-10
-        flex-1
-        min-h-screen
-        overflow-y-auto
-        ">
+        <div className={`
+relative
+z-10
+flex
+min-h-screen
+
+${
+  sidebarOpen
+    ? "h-screen overflow-hidden"
+    : ""
+}
+`}>
 
           {/* =============================================== */}
           {/* 🔥 MOBILE TOP */}
