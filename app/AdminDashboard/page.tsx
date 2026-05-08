@@ -20,64 +20,49 @@ import {
   MessageSquareWarning,
   Users,
   UtensilsCrossed,
+  Menu,
 } from "lucide-react";
 
 import { useState } from "react";
 
 export default function AdminDashboardPage() {
 
-  /* ====================================================== */
-  /* 🔥 ACTIVE PAGE */
-  /* ====================================================== */
-
   const [activePage, setActivePage] =
     useState("Dashboard");
 
-  /* ====================================================== */
-  /* 🔥 MENU */
-  /* ====================================================== */
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
 
   const menu = [
-
     {
       name: "Dashboard",
       icon: LayoutDashboard,
     },
-
     {
       name: "Rooms",
       icon: BedDouble,
     },
-
     {
       name: "Residents",
       icon: Users,
     },
-
     {
       name: "Payments",
       icon: CreditCard,
     },
-
     {
       name: "Food Menu",
       icon: UtensilsCrossed,
     },
-
     {
       name: "Complaints",
       icon: MessageSquareWarning,
     },
-
     {
       name: "Reports",
       icon: FileBarChart2,
     },
   ];
-
-  /* ====================================================== */
-  /* 🔥 LOGOUT */
-  /* ====================================================== */
 
   const handleLogout = () => {
 
@@ -92,10 +77,6 @@ export default function AdminDashboardPage() {
     window.location.href = "/";
   };
 
-  /* ====================================================== */
-  /* 🔥 JSX */
-  /* ====================================================== */
-
   return (
 
     <main className="
@@ -105,9 +86,7 @@ export default function AdminDashboardPage() {
     bg-[#050816]
     ">
 
-      {/* ================================================= */}
-      {/* 🔥 BACKGROUND */}
-      {/* ================================================= */}
+      {/* BACKGROUND */}
 
       <div className="
       fixed
@@ -115,8 +94,6 @@ export default function AdminDashboardPage() {
       overflow-hidden
       pointer-events-none
       ">
-
-        {/* GRID */}
 
         <div className="
         absolute
@@ -126,65 +103,31 @@ export default function AdminDashboardPage() {
         [background-size:80px_80px]
         "></div>
 
-        {/* PURPLE GLOW */}
-
-        <div className="
-        absolute
-        top-[-300px]
-        left-[-300px]
-        w-[800px]
-        h-[800px]
-        bg-purple-500/20
-        blur-[200px]
-        rounded-full
-        animate-pulse
-        "></div>
-
-        {/* PINK GLOW */}
-
-        <div className="
-        absolute
-        bottom-[-300px]
-        right-[-300px]
-        w-[800px]
-        h-[800px]
-        bg-pink-500/20
-        blur-[200px]
-        rounded-full
-        animate-pulse
-        "></div>
-
-        {/* CYAN GLOW */}
-
-        <div className="
-        absolute
-        top-[30%]
-        left-[40%]
-        w-[500px]
-        h-[500px]
-        bg-cyan-500/10
-        blur-[180px]
-        rounded-full
-        "></div>
-
-        {/* EXTRA PURPLE LIGHT */}
-
-        <div className="
-        absolute
-        bottom-[10%]
-        left-[15%]
-        w-[400px]
-        h-[400px]
-        bg-violet-500/10
-        blur-[160px]
-        rounded-full
-        "></div>
-
       </div>
 
-      {/* ================================================= */}
-      {/* 🔥 MAIN LAYOUT */}
-      {/* ================================================= */}
+      {/* MOBILE OVERLAY */}
+
+      {
+        sidebarOpen && (
+
+          <div
+            onClick={() =>
+              setSidebarOpen(false)
+            }
+            className="
+            fixed
+            inset-0
+            bg-black/60
+            backdrop-blur-sm
+            z-40
+            lg:hidden
+            "
+          />
+
+        )
+      }
+
+      {/* MAIN */}
 
       <div className="
       relative
@@ -193,23 +136,32 @@ export default function AdminDashboardPage() {
       min-h-screen
       ">
 
-        {/* ================================================= */}
-        {/* 🔥 SIDEBAR */}
-        {/* ================================================= */}
+        {/* SIDEBAR */}
 
-        <Sidebar
+        <div className={`
+        fixed
+        lg:relative
+        z-50
+        lg:z-10
+        h-screen
+        transition-all
+        duration-300
 
-  activeMenu={activePage}
+        ${
+          sidebarOpen
+            ? "translate-x-0"
+            : "-translate-x-full lg:translate-x-0"
+        }
+        `}>
 
-  setActiveMenu={
-    setActivePage
-  }
+          <Sidebar
+            activeMenu={activePage}
+            setActiveMenu={setActivePage}
+          />
 
-/>
+        </div>
 
-        {/* ================================================= */}
-        {/* 🔥 CONTENT AREA */}
-        {/* ================================================= */}
+        {/* CONTENT */}
 
         <div className="
         flex-1
@@ -219,18 +171,87 @@ export default function AdminDashboardPage() {
         overflow-hidden
         ">
 
-          {/* ================================================= */}
-          {/* 🔥 TOPBAR */}
-          {/* ================================================= */}
+          {/* MOBILE TOPBAR */}
+
+          <div className="
+          lg:hidden
+          sticky
+          top-0
+          z-30
+          px-5
+          py-4
+          border-b
+          border-white/10
+          bg-[#050816]/90
+          backdrop-blur-3xl
+          flex
+          items-center
+          justify-between
+          ">
+
+            <div className="
+            flex
+            items-center
+            gap-3
+            ">
+
+              <button
+                onClick={() =>
+                  setSidebarOpen(true)
+                }
+                className="
+                w-11
+                h-11
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/[0.05]
+                flex
+                items-center
+                justify-center
+                text-white
+                "
+              >
+
+                <Menu size={22} />
+
+              </button>
+
+              <div>
+
+                <h2 className="
+                text-white
+                text-lg
+                font-bold
+                ">
+
+                  SVBS Hostel
+
+                </h2>
+
+                <p className="
+                text-xs
+                text-gray-400
+                ">
+
+                  Admin Dashboard
+
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* TOPBAR */}
 
           <Topbar
             title={activePage}
             role="Admin"
           />
 
-          {/* ================================================= */}
-          {/* 🔥 PAGE CONTENT */}
-          {/* ================================================= */}
+          {/* PAGE */}
 
           <div className="
           flex-1
@@ -241,82 +262,54 @@ export default function AdminDashboardPage() {
           xl:p-10
           ">
 
-            {/* ============================================= */}
-            {/* 🔥 DASHBOARD */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Dashboard" && (
+                <DashboardPage />
+              )
+            }
 
-              <DashboardPage />
-
-            )}
-
-            {/* ============================================= */}
-            {/* 🔥 ROOMS */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Rooms" && (
+                <RoomsPage />
+              )
+            }
 
-              <RoomsPage />
-
-            )}
-
-            {/* ============================================= */}
-            {/* 🔥 RESIDENTS */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Residents" && (
+                <ResidentsPage />
+              )
+            }
 
-              <ResidentsPage />
-
-            )}
-
-            {/* ============================================= */}
-            {/* 🔥 PAYMENTS */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Payments" && (
+                <PaymentsPage />
+              )
+            }
 
-              <PaymentsPage />
-
-            )}
-
-            {/* ============================================= */}
-            {/* 🔥 FOOD MENU */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Food Menu" && (
+                <FoodPage />
+              )
+            }
 
-              <FoodPage />
-
-            )}
-
-            {/* ============================================= */}
-            {/* 🔥 COMPLAINTS */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Complaints" && (
+                <ComplaintsPage />
+              )
+            }
 
-              <ComplaintsPage />
-
-            )}
-
-            {/* ============================================= */}
-            {/* 🔥 REPORTS */}
-            {/* ============================================= */}
-
-            {activePage ===
+            {
+              activePage ===
               "Reports" && (
-
-              <ReportsPage />
-
-            )}
+                <ReportsPage />
+              )
+            }
 
           </div>
 
@@ -324,9 +317,7 @@ export default function AdminDashboardPage() {
 
       </div>
 
-      {/* ================================================= */}
-      {/* 🔥 MOBILE FLOATING LOGOUT */}
-      {/* ================================================= */}
+      {/* MOBILE LOGOUT */}
 
       <button
 
@@ -355,7 +346,6 @@ export default function AdminDashboardPage() {
         transition-all
         duration-300
         "
-
       >
 
         <LogOut size={24} />
@@ -364,4 +354,4 @@ export default function AdminDashboardPage() {
 
     </main>
   );
-} 
+}
