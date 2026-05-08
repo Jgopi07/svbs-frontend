@@ -13,8 +13,10 @@ import {
   Building2,
   IndianRupee,
   AlertTriangle,
+  ChevronDown,
   MoonStar,
   SunMedium,
+  Menu,
   UserCircle2,
   Clock3,
   BadgeCheck,
@@ -24,28 +26,7 @@ import { motion } from "framer-motion";
 
 import { useState } from "react";
 
-/* ====================================================== */
-/* 🔥 PROPS */
-/* ====================================================== */
-
-interface TopbarProps {
-
-  title: string;
-
-  role: string;
-}
-
-/* ====================================================== */
-/* 🔥 COMPONENT */
-/* ====================================================== */
-
-export default function Topbar({
-
-  title,
-
-  role,
-
-}: TopbarProps) {
+export default function Topbar() {
 
   /* ====================================================== */
   /* 🔥 STATES */
@@ -199,7 +180,7 @@ export default function Topbar({
               "
             >
 
-              {title} ⚡
+              Admin Dashboard ⚡
 
             </motion.h1>
 
@@ -267,7 +248,9 @@ export default function Topbar({
             "
           >
 
-            {/* SEARCH */}
+            {/* ===================================== */}
+            {/* 🔥 SEARCH */}
+            {/* ===================================== */}
 
             <div className="
             hidden
@@ -321,7 +304,9 @@ export default function Topbar({
 
             </div>
 
-            {/* DATE */}
+            {/* ===================================== */}
+            {/* 🔥 DATE */}
+            {/* ===================================== */}
 
             <div className="
             hidden
@@ -375,7 +360,7 @@ export default function Topbar({
                 text-xs
                 ">
 
-                  Logged in as {role}
+                  System Updated Live
 
                 </p>
 
@@ -383,7 +368,9 @@ export default function Topbar({
 
             </div>
 
-            {/* NOTIFICATIONS */}
+            {/* ===================================== */}
+            {/* 🔥 NOTIFICATIONS */}
+            {/* ===================================== */}
 
             <button className="
             relative
@@ -407,6 +394,8 @@ export default function Topbar({
 
               <Bell size={24} />
 
+              {/* DOT */}
+
               <span className="
               absolute
               top-4
@@ -422,7 +411,9 @@ export default function Topbar({
 
             </button>
 
-            {/* SETTINGS */}
+            {/* ===================================== */}
+            {/* 🔥 SETTINGS */}
+            {/* ===================================== */}
 
             <button className="
             w-16
@@ -449,7 +440,9 @@ export default function Topbar({
 
             </button>
 
-            {/* DARK MODE */}
+            {/* ===================================== */}
+            {/* 🔥 DARK MODE */}
+            {/* ===================================== */}
 
             <button
 
@@ -498,6 +491,605 @@ export default function Topbar({
           </motion.div>
 
         </div>
+
+        {/* ============================================= */}
+        {/* 🔥 STATS STRIP */}
+        {/* ============================================= */}
+
+        <motion.div
+
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            delay: 0.2,
+          }}
+
+          className="
+          grid
+          grid-cols-2
+          md:grid-cols-3
+          xl:grid-cols-6
+          gap-4
+          "
+        >
+
+          {/* ========================================= */}
+          {/* 🔥 CARD 1 */}
+          {/* ========================================= */}
+
+          <div className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-5
+          backdrop-blur-2xl
+          hover:-translate-y-1
+          transition-all
+          duration-300
+          ">
+
+            {/* GLOW */}
+
+            <div className="
+            absolute
+            top-0
+            right-0
+            w-28
+            h-28
+            rounded-full
+            bg-purple-500/20
+            blur-[70px]
+            "></div>
+
+            <div className="
+            relative
+            z-10
+            ">
+
+              <div className="
+              flex
+              items-center
+              justify-between
+              mb-5
+              ">
+
+                <div className="
+                w-12
+                h-12
+                rounded-2xl
+                bg-gradient-to-r
+                from-purple-500/20
+                to-pink-500/20
+                border
+                border-white/10
+                flex
+                items-center
+                justify-center
+                text-purple-300
+                ">
+
+                  <Users size={22} />
+
+                </div>
+
+                <Activity
+                  size={18}
+                  className="
+                  text-emerald-400
+                  "
+                />
+
+              </div>
+
+              <h3 className="
+              text-3xl
+              font-black
+              text-white
+              mb-2
+              ">
+
+                248
+
+              </h3>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                Total Residents
+
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* ========================================= */}
+          {/* 🔥 CARD 2 */}
+          {/* ========================================= */}
+
+          <div className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-5
+          backdrop-blur-2xl
+          hover:-translate-y-1
+          transition-all
+          duration-300
+          ">
+
+            <div className="
+            absolute
+            top-0
+            right-0
+            w-28
+            h-28
+            rounded-full
+            bg-pink-500/20
+            blur-[70px]
+            "></div>
+
+            <div className="
+            relative
+            z-10
+            ">
+
+              <div className="
+              flex
+              items-center
+              justify-between
+              mb-5
+              ">
+
+                <div className="
+                w-12
+                h-12
+                rounded-2xl
+                bg-gradient-to-r
+                from-pink-500/20
+                to-rose-500/20
+                border
+                border-white/10
+                flex
+                items-center
+                justify-center
+                text-pink-300
+                ">
+
+                  <Building2
+                    size={22}
+                  />
+
+                </div>
+
+                <BadgeCheck
+                  size={18}
+                  className="
+                  text-emerald-400
+                  "
+                />
+
+              </div>
+
+              <h3 className="
+              text-3xl
+              font-black
+              text-white
+              mb-2
+              ">
+
+                92%
+
+              </h3>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                Occupancy Rate
+
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* ========================================= */}
+          {/* 🔥 CARD 3 */}
+          {/* ========================================= */}
+
+          <div className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-5
+          backdrop-blur-2xl
+          hover:-translate-y-1
+          transition-all
+          duration-300
+          ">
+
+            <div className="
+            absolute
+            top-0
+            right-0
+            w-28
+            h-28
+            rounded-full
+            bg-yellow-500/20
+            blur-[70px]
+            "></div>
+
+            <div className="
+            relative
+            z-10
+            ">
+
+              <div className="
+              flex
+              items-center
+              justify-between
+              mb-5
+              ">
+
+                <div className="
+                w-12
+                h-12
+                rounded-2xl
+                bg-gradient-to-r
+                from-yellow-500/20
+                to-orange-500/20
+                border
+                border-white/10
+                flex
+                items-center
+                justify-center
+                text-yellow-300
+                ">
+
+                  <IndianRupee
+                    size={22}
+                  />
+
+                </div>
+
+                <Activity
+                  size={18}
+                  className="
+                  text-emerald-400
+                  "
+                />
+
+              </div>
+
+              <h3 className="
+              text-3xl
+              font-black
+              text-white
+              mb-2
+              ">
+
+                ₹4.8L
+
+              </h3>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                Monthly Revenue
+
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* ========================================= */}
+          {/* 🔥 CARD 4 */}
+          {/* ========================================= */}
+
+          <div className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-5
+          backdrop-blur-2xl
+          hover:-translate-y-1
+          transition-all
+          duration-300
+          ">
+
+            <div className="
+            absolute
+            top-0
+            right-0
+            w-28
+            h-28
+            rounded-full
+            bg-red-500/20
+            blur-[70px]
+            "></div>
+
+            <div className="
+            relative
+            z-10
+            ">
+
+              <div className="
+              flex
+              items-center
+              justify-between
+              mb-5
+              ">
+
+                <div className="
+                w-12
+                h-12
+                rounded-2xl
+                bg-gradient-to-r
+                from-red-500/20
+                to-pink-500/20
+                border
+                border-white/10
+                flex
+                items-center
+                justify-center
+                text-red-300
+                ">
+
+                  <AlertTriangle
+                    size={22}
+                  />
+
+                </div>
+
+                <Clock3
+                  size={18}
+                  className="
+                  text-yellow-300
+                  "
+                />
+
+              </div>
+
+              <h3 className="
+              text-3xl
+              font-black
+              text-white
+              mb-2
+              ">
+
+                14
+
+              </h3>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                Pending Payments
+
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* ========================================= */}
+          {/* 🔥 CARD 5 */}
+          {/* ========================================= */}
+
+          <div className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-5
+          backdrop-blur-2xl
+          hover:-translate-y-1
+          transition-all
+          duration-300
+          ">
+
+            <div className="
+            absolute
+            top-0
+            right-0
+            w-28
+            h-28
+            rounded-full
+            bg-cyan-500/20
+            blur-[70px]
+            "></div>
+
+            <div className="
+            relative
+            z-10
+            ">
+
+              <div className="
+              flex
+              items-center
+              justify-between
+              mb-5
+              ">
+
+                <div className="
+                w-12
+                h-12
+                rounded-2xl
+                bg-gradient-to-r
+                from-cyan-500/20
+                to-blue-500/20
+                border
+                border-white/10
+                flex
+                items-center
+                justify-center
+                text-cyan-300
+                ">
+
+                  <Wifi size={22} />
+
+                </div>
+
+                <ShieldCheck
+                  size={18}
+                  className="
+                  text-emerald-400
+                  "
+                />
+
+              </div>
+
+              <h3 className="
+              text-3xl
+              font-black
+              text-white
+              mb-2
+              ">
+
+                Stable
+
+              </h3>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                Network Status
+
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* ========================================= */}
+          {/* 🔥 CARD 6 */}
+          {/* ========================================= */}
+
+          <div className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-5
+          backdrop-blur-2xl
+          hover:-translate-y-1
+          transition-all
+          duration-300
+          ">
+
+            <div className="
+            absolute
+            top-0
+            right-0
+            w-28
+            h-28
+            rounded-full
+            bg-purple-500/20
+            blur-[70px]
+            "></div>
+
+            <div className="
+            relative
+            z-10
+            ">
+
+              <div className="
+              flex
+              items-center
+              justify-between
+              mb-5
+              ">
+
+                <div className="
+                w-12
+                h-12
+                rounded-2xl
+                bg-gradient-to-r
+                from-purple-500/20
+                to-indigo-500/20
+                border
+                border-white/10
+                flex
+                items-center
+                justify-center
+                text-purple-300
+                ">
+
+                  <UserCircle2
+                    size={22}
+                  />
+
+                </div>
+
+                <Activity
+                  size={18}
+                  className="
+                  text-emerald-400
+                  "
+                />
+
+              </div>
+
+              <h3 className="
+              text-3xl
+              font-black
+              text-white
+              mb-2
+              ">
+
+                Online
+
+              </h3>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                Admin Status
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </motion.div>
 
       </div>
 

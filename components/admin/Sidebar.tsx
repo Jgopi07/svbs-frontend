@@ -12,34 +12,14 @@ import {
   ShieldCheck,
   MoonStar,
   LogOut,
+  Sparkles,
   Activity,
   Building2,
   ClipboardList,
   UserPlus,
-  Bell,
-  Search,
-  Sparkles,
-  Wifi,
-  Camera,
-  Settings,
-  Crown,
-  ArrowUpRight,
-  Shield,
-  Home,
-  UserCheck,
-  CalendarDays,
-  BarChart3,
 } from "lucide-react";
 
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
-
-import {
-  useEffect,
-  useState,
-} from "react";
+import { motion } from "framer-motion";
 
 interface SidebarProps {
 
@@ -59,54 +39,6 @@ export default function Sidebar({
 }: SidebarProps) {
 
   /* ====================================================== */
-  /* 🔥 STATES */
-  /* ====================================================== */
-
-  const [currentTime, setCurrentTime] =
-    useState("");
-
-  const [onlineUsers] =
-    useState(148);
-
-  const [notifications] =
-    useState(12);
-
-  /* ====================================================== */
-  /* 🔥 TIME */
-  /* ====================================================== */
-
-  useEffect(() => {
-
-    const updateClock = () => {
-
-      const now = new Date();
-
-      setCurrentTime(
-
-        now.toLocaleTimeString(
-          [],
-          {
-            hour: "2-digit",
-            minute: "2-digit",
-          }
-        )
-      );
-    };
-
-    updateClock();
-
-    const interval =
-      setInterval(
-        updateClock,
-        1000
-      );
-
-    return () =>
-      clearInterval(interval);
-
-  }, []);
-
-  /* ====================================================== */
   /* 🔥 MENU */
   /* ====================================================== */
 
@@ -117,8 +49,6 @@ export default function Sidebar({
       icon: LayoutDashboard,
       desc:
         "Overview & analytics",
-      color:
-        "from-purple-500 to-pink-500",
     },
 
     {
@@ -126,8 +56,6 @@ export default function Sidebar({
       icon: BedDouble,
       desc:
         "Manage hostel rooms",
-      color:
-        "from-blue-500 to-cyan-500",
     },
 
     {
@@ -135,8 +63,6 @@ export default function Sidebar({
       icon: Users,
       desc:
         "Students management",
-      color:
-        "from-emerald-500 to-green-500",
     },
 
     {
@@ -144,8 +70,6 @@ export default function Sidebar({
       icon: CreditCard,
       desc:
         "Track rent payments",
-      color:
-        "from-yellow-400 to-orange-500",
     },
 
     {
@@ -153,8 +77,6 @@ export default function Sidebar({
       icon: UtensilsCrossed,
       desc:
         "Mess management",
-      color:
-        "from-pink-500 to-rose-500",
     },
 
     {
@@ -163,8 +85,6 @@ export default function Sidebar({
         MessageSquareWarning,
       desc:
         "Student issues",
-      color:
-        "from-red-500 to-orange-500",
     },
 
     {
@@ -172,35 +92,6 @@ export default function Sidebar({
       icon: FileBarChart2,
       desc:
         "Analytics & reports",
-      color:
-        "from-indigo-500 to-purple-500",
-    },
-
-    {
-      name: "Attendance",
-      icon: UserCheck,
-      desc:
-        "Track attendance",
-      color:
-        "from-cyan-500 to-blue-500",
-    },
-
-    {
-      name: "Events",
-      icon: CalendarDays,
-      desc:
-        "Hostel activities",
-      color:
-        "from-fuchsia-500 to-pink-500",
-    },
-
-    {
-      name: "Analytics",
-      icon: BarChart3,
-      desc:
-        "Advanced insights",
-      color:
-        "from-violet-500 to-purple-500",
     },
   ];
 
@@ -211,15 +102,11 @@ export default function Sidebar({
   const handleLogout = () => {
 
     localStorage.removeItem(
-      "svbs-auth"
-    );
-
-    localStorage.removeItem(
       "svbs-role"
     );
 
     localStorage.removeItem(
-      "svbs-user-email"
+      "svbs-user"
     );
 
     window.location.href = "/";
@@ -234,7 +121,7 @@ export default function Sidebar({
     <motion.aside
 
       initial={{
-        x: -100,
+        x: -80,
         opacity: 0,
       }}
 
@@ -244,18 +131,18 @@ export default function Sidebar({
       }}
 
       transition={{
-        duration: 0.7,
+        duration: 0.6,
       }}
 
       className="
       hidden
       lg:flex
       flex-col
-      w-[340px]
+      w-[330px]
       min-h-screen
       border-r
       border-white/10
-      bg-[#06060b]
+      bg-white/[0.04]
       backdrop-blur-3xl
       p-7
       relative
@@ -264,33 +151,33 @@ export default function Sidebar({
     >
 
       {/* ================================================= */}
-      {/* 🔥 HUGE GLOW */}
+      {/* 🔥 GLOW */}
       {/* ================================================= */}
 
       <div className="
       absolute
-      top-[-150px]
+      top-[-120px]
       left-[-120px]
-      w-[320px]
-      h-[320px]
+      w-[260px]
+      h-[260px]
       rounded-full
       bg-purple-500/20
-      blur-[120px]
+      blur-[100px]
       "></div>
 
       <div className="
       absolute
-      bottom-[-140px]
-      right-[-140px]
-      w-[340px]
-      h-[340px]
+      bottom-[-120px]
+      right-[-120px]
+      w-[260px]
+      h-[260px]
       rounded-full
       bg-pink-500/20
-      blur-[120px]
+      blur-[100px]
       "></div>
 
       {/* ================================================= */}
-      {/* 🔥 HEADER */}
+      {/* 🔥 TOP LOGO */}
       {/* ================================================= */}
 
       <div className="
@@ -302,8 +189,6 @@ export default function Sidebar({
       mb-10
       ">
 
-        {/* LEFT */}
-
         <div className="
         flex
         items-center
@@ -312,46 +197,35 @@ export default function Sidebar({
 
           {/* LOGO */}
 
-          <motion.div
+          <div className="
+          relative
+          w-16
+          h-16
+          rounded-[22px]
+          bg-gradient-to-r
+          from-purple-500
+          via-pink-500
+          to-yellow-400
+          flex
+          items-center
+          justify-center
+          text-black
+          font-black
+          text-2xl
+          shadow-[0_0_40px_rgba(168,85,247,0.5)]
+          ">
 
-            whileHover={{
-              rotate: 360,
-            }}
-
-            transition={{
-              duration: 0.9,
-            }}
-
-            className="
-            relative
-            w-16
-            h-16
-            rounded-[24px]
-            bg-gradient-to-r
-            from-purple-500
-            via-pink-500
-            to-yellow-400
-            flex
-            items-center
-            justify-center
-            text-black
-            font-black
-            text-2xl
-            shadow-[0_0_45px_rgba(168,85,247,0.45)]
-            "
-          >
-
-            S
+            A
 
             <div className="
             absolute
             inset-0
-            rounded-[24px]
+            rounded-[22px]
             border
             border-white/20
             "></div>
 
-          </motion.div>
+          </div>
 
           {/* TEXT */}
 
@@ -370,12 +244,12 @@ export default function Sidebar({
             </h1>
 
             <p className="
-            text-gray-400
             text-sm
+            text-gray-400
             tracking-wide
             ">
 
-              Premium Dashboard
+              Admin Dashboard
 
             </p>
 
@@ -383,88 +257,34 @@ export default function Sidebar({
 
         </div>
 
-        {/* NOTIFICATIONS */}
+        {/* LIVE */}
 
         <div className="
-        relative
-        w-14
-        h-14
-        rounded-2xl
-        border
-        border-white/10
-        bg-white/[0.05]
         flex
         items-center
-        justify-center
-        text-white
+        gap-2
+        px-3
+        py-2
+        rounded-full
+        border
+        border-emerald-500/20
+        bg-emerald-500/10
+        text-emerald-300
+        text-xs
+        font-semibold
         ">
 
-          <Bell size={22} />
-
           <div className="
-          absolute
-          top-2
-          right-2
-          w-5
-          h-5
+          w-2
+          h-2
           rounded-full
-          bg-pink-500
-          text-[10px]
-          font-bold
-          flex
-          items-center
-          justify-center
-          text-white
-          ">
+          bg-emerald-400
+          animate-pulse
+          "></div>
 
-            {notifications}
-
-          </div>
+          LIVE
 
         </div>
-
-      </div>
-
-      {/* ================================================= */}
-      {/* 🔥 SEARCH */}
-      {/* ================================================= */}
-
-      <div className="
-      relative
-      z-10
-      mb-8
-      ">
-
-        <Search
-          size={18}
-          className="
-          absolute
-          left-5
-          top-1/2
-          -translate-y-1/2
-          text-gray-500
-          "
-        />
-
-        <input
-          type="text"
-          placeholder="Search anything..."
-          className="
-          w-full
-          rounded-2xl
-          border
-          border-white/10
-          bg-white/[0.05]
-          pl-14
-          pr-5
-          py-4
-          text-white
-          outline-none
-          focus:border-purple-500/30
-          transition-all
-          duration-300
-          "
-        />
 
       </div>
 
@@ -484,7 +304,7 @@ export default function Sidebar({
       mb-8
       ">
 
-        {/* BG */}
+        {/* CARD GLOW */}
 
         <div className="
         absolute
@@ -504,104 +324,64 @@ export default function Sidebar({
         z-10
         ">
 
-          {/* TOP */}
+          {/* PROFILE */}
 
           <div className="
           flex
           items-center
-          justify-between
+          gap-4
           mb-6
           ">
 
+            {/* AVATAR */}
+
             <div className="
+            w-16
+            h-16
+            rounded-2xl
+            bg-gradient-to-r
+            from-purple-500
+            to-pink-500
             flex
             items-center
-            gap-4
+            justify-center
+            text-white
+            shadow-[0_0_30px_rgba(168,85,247,0.4)]
             ">
 
-              {/* AVATAR */}
-
-              <div className="
-              relative
-              w-16
-              h-16
-              rounded-2xl
-              bg-gradient-to-r
-              from-purple-500
-              via-pink-500
-              to-yellow-400
-              flex
-              items-center
-              justify-center
-              text-white
-              shadow-[0_0_35px_rgba(168,85,247,0.4)]
-              ">
-
-                <ShieldCheck
-                  size={28}
-                />
-
-                <div className="
-                absolute
-                bottom-0
-                right-0
-                w-4
-                h-4
-                rounded-full
-                bg-emerald-400
-                border-2
-                border-black
-                "></div>
-
-              </div>
-
-              {/* DETAILS */}
-
-              <div>
-
-                <h2 className="
-                text-white
-                text-xl
-                font-bold
-                mb-1
-                ">
-
-                  Super Admin
-
-                </h2>
-
-                <p className="
-                text-gray-400
-                text-sm
-                ">
-
-                  admin@svbs.com
-
-                </p>
-
-              </div>
+              <ShieldCheck size={30} />
 
             </div>
 
-            <div className="
-            px-3
-            py-2
-            rounded-full
-            bg-emerald-500/10
-            border
-            border-emerald-500/20
-            text-emerald-300
-            text-xs
-            font-semibold
-            ">
+            {/* DETAILS */}
 
-              ONLINE
+            <div>
+
+              <h2 className="
+              text-white
+              text-xl
+              font-bold
+              mb-1
+              ">
+
+                Super Admin
+
+              </h2>
+
+              <p className="
+              text-gray-400
+              text-sm
+              ">
+
+                admin@svbs.com
+
+              </p>
 
             </div>
 
           </div>
 
-          {/* BADGES */}
+          {/* TAGS */}
 
           <div className="
           flex
@@ -614,18 +394,13 @@ export default function Sidebar({
             px-4
             py-2
             rounded-full
-            bg-purple-500/10
+            bg-emerald-500/10
             border
-            border-purple-500/20
-            text-purple-300
+            border-emerald-500/20
+            text-emerald-300
             text-xs
             font-semibold
-            flex
-            items-center
-            gap-2
             ">
-
-              <Crown size={14} />
 
               Full Access
 
@@ -635,26 +410,21 @@ export default function Sidebar({
             px-4
             py-2
             rounded-full
-            bg-pink-500/10
+            bg-purple-500/10
             border
-            border-pink-500/20
-            text-pink-300
+            border-purple-500/20
+            text-purple-300
             text-xs
             font-semibold
-            flex
-            items-center
-            gap-2
             ">
 
-              <Shield size={14} />
-
-              Secure Mode
+              Secure Control
 
             </div>
 
           </div>
 
-          {/* STATS */}
+          {/* MINI STATS */}
 
           <div className="
           grid
@@ -662,8 +432,6 @@ export default function Sidebar({
           gap-4
           ">
 
-            {/* RESIDENTS */}
-
             <div className="
             rounded-2xl
             border
@@ -675,49 +443,39 @@ export default function Sidebar({
               <div className="
               flex
               items-center
-              justify-between
-              mb-4
+              gap-3
+              mb-3
               ">
 
                 <Users
-                  size={20}
+                  size={18}
                   className="
                   text-purple-300
                   "
                 />
 
-                <ArrowUpRight
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
+                <span className="
+                text-gray-400
+                text-sm
+                ">
+
+                  Residents
+
+                </span>
 
               </div>
 
               <h3 className="
-              text-3xl
+              text-2xl
               font-black
               text-white
-              mb-1
               ">
 
                 248
 
               </h3>
 
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Residents
-
-              </p>
-
             </div>
-
-            {/* ROOMS */}
 
             <div className="
             rounded-2xl
@@ -730,45 +488,37 @@ export default function Sidebar({
               <div className="
               flex
               items-center
-              justify-between
-              mb-4
+              gap-3
+              mb-3
               ">
 
-                <Home
-                  size={20}
+                <Building2
+                  size={18}
                   className="
                   text-pink-300
                   "
                 />
 
-                <ArrowUpRight
-                  size={18}
-                  className="
-                  text-emerald-400
-                  "
-                />
+                <span className="
+                text-gray-400
+                text-sm
+                ">
+
+                  Rooms
+
+                </span>
 
               </div>
 
               <h3 className="
-              text-3xl
+              text-2xl
               font-black
               text-white
-              mb-1
               ">
 
                 112
 
               </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Rooms
-
-              </p>
 
             </div>
 
@@ -779,7 +529,7 @@ export default function Sidebar({
       </div>
 
       {/* ================================================= */}
-      {/* 🔥 QUICK ACTIONS */}
+      {/* 🔥 QUICK BUTTONS */}
       {/* ================================================= */}
 
       <div className="
@@ -794,7 +544,7 @@ export default function Sidebar({
         {/* ADD */}
 
         <button className="
-        rounded-3xl
+        rounded-2xl
         bg-gradient-to-r
         from-purple-500
         to-pink-500
@@ -804,39 +554,38 @@ export default function Sidebar({
         hover:scale-[1.03]
         transition-all
         duration-300
-        shadow-[0_0_40px_rgba(168,85,247,0.35)]
+        shadow-[0_0_30px_rgba(168,85,247,0.35)]
         ">
 
           <UserPlus
-            size={26}
+            size={24}
             className="mb-4"
           />
 
           <h3 className="
           font-bold
-          text-lg
-          mb-2
+          mb-1
           ">
 
-            Add Resident
+            Add
 
           </h3>
 
           <p className="
           text-white/80
-          text-sm
+          text-xs
           ">
 
-            Create new entry
+            Resident
 
           </p>
 
         </button>
 
-        {/* REPORTS */}
+        {/* REPORT */}
 
         <button className="
-        rounded-3xl
+        rounded-2xl
         border
         border-white/10
         bg-white/[0.05]
@@ -848,7 +597,7 @@ export default function Sidebar({
         ">
 
           <ClipboardList
-            size={26}
+            size={24}
             className="
             text-purple-300
             mb-4
@@ -858,8 +607,7 @@ export default function Sidebar({
           <h3 className="
           text-white
           font-bold
-          text-lg
-          mb-2
+          mb-1
           ">
 
             Reports
@@ -868,10 +616,10 @@ export default function Sidebar({
 
           <p className="
           text-gray-400
-          text-sm
+          text-xs
           ">
 
-            Download insights
+            Download
 
           </p>
 
@@ -894,8 +642,7 @@ export default function Sidebar({
 
         {menu.map((item, i) => {
 
-          const Icon =
-            item.icon;
+          const Icon = item.icon;
 
           return (
 
@@ -933,9 +680,10 @@ export default function Sidebar({
 
                   ? `
                   bg-gradient-to-r
-                  ${item.color}
-                  border-transparent
-                  shadow-[0_0_45px_rgba(168,85,247,0.35)]
+                  from-purple-500
+                  to-pink-500
+                  border-purple-500/20
+                  shadow-[0_0_40px_rgba(168,85,247,0.35)]
                   text-white
                   `
 
@@ -949,6 +697,20 @@ export default function Sidebar({
               }
               `}
             >
+
+              {/* ACTIVE GLOW */}
+
+              {activeMenu ===
+                item.name && (
+
+                <div className="
+                absolute
+                inset-0
+                bg-white/5
+                "></div>
+              )}
+
+              {/* CONTENT */}
 
               <div className="
               relative
@@ -975,6 +737,7 @@ export default function Sidebar({
                   flex
                   items-center
                   justify-center
+                  transition-all
 
                   ${
                     activeMenu ===
@@ -1042,7 +805,9 @@ export default function Sidebar({
                 {/* RIGHT */}
 
                 <ChevronRight
+
                   size={20}
+
                   className={`
                   transition-all
                   duration-300
@@ -1089,14 +854,16 @@ export default function Sidebar({
       overflow-hidden
       ">
 
+        {/* GLOW */}
+
         <div className="
         absolute
         bottom-0
         right-0
-        w-40
-        h-40
+        w-36
+        h-36
         bg-pink-500/20
-        blur-[90px]
+        blur-[80px]
         rounded-full
         "></div>
 
@@ -1129,7 +896,7 @@ export default function Sidebar({
             text-sm
             ">
 
-              Real-time performance
+              Hostel performance
 
             </p>
 
@@ -1154,7 +921,7 @@ export default function Sidebar({
 
         </div>
 
-        {/* STATS */}
+        {/* PROGRESS */}
 
         <div className="
         relative
@@ -1268,59 +1035,6 @@ export default function Sidebar({
 
           </div>
 
-          {/* SECURITY */}
-
-          <div>
-
-            <div className="
-            flex
-            items-center
-            justify-between
-            mb-3
-            ">
-
-              <span className="
-              text-gray-300
-              text-sm
-              ">
-
-                Security
-
-              </span>
-
-              <span className="
-              text-white
-              font-semibold
-              text-sm
-              ">
-
-                98%
-
-              </span>
-
-            </div>
-
-            <div className="
-            w-full
-            h-3
-            rounded-full
-            bg-white/10
-            overflow-hidden
-            ">
-
-              <div className="
-              h-full
-              w-[98%]
-              rounded-full
-              bg-gradient-to-r
-              from-emerald-400
-              to-green-500
-              "></div>
-
-            </div>
-
-          </div>
-
         </div>
 
       </div>
@@ -1334,7 +1048,7 @@ export default function Sidebar({
       z-10
       ">
 
-        {/* SYSTEM */}
+        {/* MODE */}
 
         <div className="
         flex
@@ -1356,7 +1070,7 @@ export default function Sidebar({
             mb-2
             ">
 
-              System Status
+              Secure Mode
 
             </h3>
 
@@ -1365,7 +1079,7 @@ export default function Sidebar({
             text-sm
             ">
 
-              Fully secured
+              System protected
 
             </p>
 
@@ -1385,79 +1099,6 @@ export default function Sidebar({
           ">
 
             <MoonStar size={22} />
-
-          </div>
-
-        </div>
-
-        {/* ONLINE */}
-
-        <div className="
-        flex
-        items-center
-        justify-between
-        rounded-[28px]
-        border
-        border-white/10
-        bg-white/[0.05]
-        p-5
-        mb-5
-        ">
-
-          <div className="
-          flex
-          items-center
-          gap-4
-          ">
-
-            <div className="
-            w-12
-            h-12
-            rounded-2xl
-            bg-gradient-to-r
-            from-emerald-400
-            to-green-500
-            flex
-            items-center
-            justify-center
-            text-white
-            ">
-
-              <Wifi size={22} />
-
-            </div>
-
-            <div>
-
-              <h3 className="
-              text-white
-              font-bold
-              ">
-
-                {onlineUsers} Users
-
-              </h3>
-
-              <p className="
-              text-gray-400
-              text-sm
-              ">
-
-                Currently online
-
-              </p>
-
-            </div>
-
-          </div>
-
-          <div className="
-          text-emerald-400
-          text-sm
-          font-semibold
-          ">
-
-            {currentTime}
 
           </div>
 
@@ -1492,7 +1133,7 @@ export default function Sidebar({
           items-center
           justify-center
           gap-4
-          shadow-[0_0_40px_rgba(239,68,68,0.35)]
+          shadow-[0_0_35px_rgba(239,68,68,0.35)]
           "
         >
 
@@ -1515,7 +1156,7 @@ export default function Sidebar({
           tracking-wide
           ">
 
-            © 2026 SVBS Premium Hostel
+            © 2026 SVBS Hostel Management
 
           </p>
 
@@ -1525,4 +1166,4 @@ export default function Sidebar({
 
     </motion.aside>
   );
-}
+} 
