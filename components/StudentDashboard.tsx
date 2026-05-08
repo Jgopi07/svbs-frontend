@@ -110,11 +110,7 @@ export default function StudentDashboard() {
       default:
 
         return (
-          <DashboardPage
-            setActiveMenu={
-              setActiveMenu
-            }
-          />
+          <DashboardPage/>
         );
     }
   };
